@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <omp.h>
 
 // Number of elements
 #define ARRAY_SIZE      64000
@@ -11,28 +10,37 @@
 #define DATA_TYPE       U_INT
 
 // Masks
+#define M_3b            0x00000007
 #define M_NIBBLE        0x0000000F
 #define M_BYTE          0x000000FF
 #define MASK            M_BYTE
 
 // Number of possible values with mask
+#define V_3b            8
 #define V_NIBBLE        16
 #define V_BYTE          256
 #define NB_VALUES       V_BYTE
 
 // Number of bits for the mask
+#define B_3b            3
 #define B_NIBBLE        4
 #define B_BYTE          8
 #define SHIFT           B_BYTE          
 
 // Sort by nibble
-void count_sort(unsigned int *array, unsigned int *output, int n, unsigned int shift){
+void count_sort(unsigned int *array, int n, unsigned int shift){
+    unsigned int *output = malloc(n*sizeof(unsigned int));
+    int i, count[NB_VALUES] = {0}; //Values from 0 to 15 -> 16 values for a nibble
+
+    if(output == NULL)
+    {
+        printf("Failed to allocate");
+    }
+
     // Count occurences for each nibble
-    #pragma omp parallel for reduction(+:count)
-        int i, count[NB_VALUES] = {0}; //Values from 0 to 15 -> 16 values for a nibble
-        for (i = 0; i < n; i++){
-            count[(array[i]>>shift)&MASK]++;
-        }
+    for (i = 0; i < n; i++){
+        count[(array[i]>>shift)&MASK]++;
+    }
 
     // Translate count into real position in output 
     // Array highest index for highest values 
@@ -50,21 +58,15 @@ void count_sort(unsigned int *array, unsigned int *output, int n, unsigned int s
     for (i = 0; i < n; i++) 
         array[i] = output[i]; 
 
+    free(output);
 }
 
 // Sort for every nibbles
 void radix_sort(unsigned int *array, int n){
-
-    unsigned int *output = malloc(n*sizeof(unsigned int));
-    if(output == NULL)
-        printf("Failed to allocate");
-
     for (unsigned int shift = 0 ; shift<DATA_TYPE ; shift+=SHIFT) // example : max = 2350 et exp = 1000 -> 2.3 which means last digit
     {
-        count_sort(array, output, n, shift);
+        count_sort(array, n, shift);
     }
-
-    free(output);
 }
 
 // Print <n> elements of unsigned int array
@@ -85,10 +87,9 @@ int main(int argc, char const *argv[])
     char buffer[16]={0};
 
     FILE *fp;
-    omp_set_num_threads(4);
 
     // Generate array from file
-        if ((fp = fopen("random.txt","r")) == NULL)
+        if ((fp = fopen("../../../Data/random.txt","r")) == NULL)
         {
             printf("failed to open");
             exit(1);

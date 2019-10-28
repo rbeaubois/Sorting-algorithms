@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <omp.h>
 
 // Number of elements
 #define ARRAY_SIZE      64000
@@ -25,19 +26,13 @@
 #define SHIFT           B_BYTE          
 
 // Sort by nibble
-void count_sort(unsigned int *array, int n, unsigned int shift){
-    unsigned int *output = malloc(n*sizeof(unsigned int));
+void count_sort(unsigned int *array, unsigned int *output, int n, unsigned int shift){
     int i, count[NB_VALUES] = {0}; //Values from 0 to 15 -> 16 values for a nibble
-
-    if(output == NULL)
-    {
-        printf("Failed to allocate");
-    }
-
     // Count occurences for each nibble
-    for (i = 0; i < n; i++){
-        count[(array[i]>>shift)&MASK]++;
-    }
+	#pragma omp parallel for reduction(+:count)
+        for (i = 0; i < n; i++){
+            count[(array[i]>>shift)&MASK]++;
+        }
 
     // Translate count into real position in output 
     // Array highest index for highest values 
@@ -55,15 +50,21 @@ void count_sort(unsigned int *array, int n, unsigned int shift){
     for (i = 0; i < n; i++) 
         array[i] = output[i]; 
 
-    free(output);
 }
 
 // Sort for every nibbles
 void radix_sort(unsigned int *array, int n){
+
+    unsigned int *output = malloc(n*sizeof(unsigned int));
+    if(output == NULL)
+        printf("Failed to allocate");
+
     for (unsigned int shift = 0 ; shift<DATA_TYPE ; shift+=SHIFT) // example : max = 2350 et exp = 1000 -> 2.3 which means last digit
     {
-        count_sort(array, n, shift);
+        count_sort(array, output, n, shift);
     }
+
+    free(output);
 }
 
 // Print <n> elements of unsigned int array
@@ -84,9 +85,10 @@ int main(int argc, char const *argv[])
     char buffer[16]={0};
 
     FILE *fp;
+    omp_set_num_threads(4);
 
     // Generate array from file
-        if ((fp = fopen("random.txt","r")) == NULL)
+        if ((fp = fopen("../../../Data/random.txt","r")) == NULL)
         {
             printf("failed to open");
             exit(1);
