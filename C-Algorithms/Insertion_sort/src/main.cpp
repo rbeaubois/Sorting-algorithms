@@ -1,4 +1,6 @@
 #include "tab.h"
+#include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 
 void swap(unsigned int *a, unsigned int *b)
@@ -51,7 +53,7 @@ int main(int argc, char const *argv[])
 {
     int len = atoi(argv[1]);
     unsigned int tab[len];
-    char *filename = argv[2];
+    const char *filename = argv[2];
 
     TabFromFile(filename, len, tab);
 

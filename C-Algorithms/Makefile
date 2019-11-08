@@ -1,20 +1,20 @@
-TARGET 		= Tri_insertion
+TARGET 		= out
 
-CC 			= gcc
+CC 			= g++
 
-CFLAGS 		= -W -Wall
+CFLAGS 		= -g -W -Wall
 
-LINKER 		= gcc -o 
+LINKER 		= g++ -o
 
-LFLAGS 		= -Wall -O3
+LFLAGS 		= -Wall -I.
 
 SRCDIR 		= src
 OBJDIR 		= obj
 BINDIR 		= bin
 
-SOURCES 	:= $(wildcard $(SRCDIR)/*.c)
+SOURCES 	:= $(wildcard $(SRCDIR)/*.cpp)
 INCLUDES 	:= $(wildcard $(SRCDIR)/*.h)
-OBJECTS 	:= $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+OBJECTS 	:= $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 rm 			= rm -f
 
 all: $(BINDIR)/$(TARGET)
@@ -22,7 +22,7 @@ all: $(BINDIR)/$(TARGET)
 $(BINDIR)/$(TARGET): $(OBJECTS)
 	@$(LINKER) $@ $(OBJECTS) $(LFLAGS) 
 
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean

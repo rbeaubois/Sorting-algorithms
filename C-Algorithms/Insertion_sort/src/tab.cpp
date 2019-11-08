@@ -9,7 +9,7 @@ void AfficherTab(int tab[], int n)
     printf("\n");
 }
 
-void TabFromFile(char *filename, int len, unsigned int tab[])
+void TabFromFile(const char *filename, int len, unsigned int tab[])
 {
     FILE *fp;
 
@@ -19,7 +19,7 @@ void TabFromFile(char *filename, int len, unsigned int tab[])
 
     if ((fp = fopen(filename, "r")) == NULL)
     {
-        printf("Erreur d'ouverture de fichier \n");
+        std::cout << "Erreur d'ouverture de fichier" << std::endl;
         exit(1);
     }
 
