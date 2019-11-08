@@ -1,4 +1,4 @@
-#include "Comparator.h"
+#include "comparator.h"
 
 #include <chrono>
 using namespace std;
