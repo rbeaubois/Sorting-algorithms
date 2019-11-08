@@ -1,5 +1,9 @@
-#indef COMPARAOTR_H
-#define COMPARAOTR_H
+#ifndef COMPARATOR_H
+#define COMPARATOR_H
+
+#include <iostream>
+#include <chrono>
+#include <unistd.h>
 
 class Comparator {
 private:
