@@ -1,5 +1,5 @@
-#indef COMPARAOTR_H
-#define COMPARAOTR_H
+#ifndef COMPARATOR_H
+#define COMPARATOR_H
 
 class Comparator {
 private:
