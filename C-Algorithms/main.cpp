@@ -26,7 +26,7 @@ int main() {
     loadFile(name, data, NBR_DATA);
 
     //Test sort
-    Buble b;
+    Bubble b;
     cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
     return 0;
 }
