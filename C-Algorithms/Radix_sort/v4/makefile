@@ -1,35 +1,30 @@
-TARGET 		= Radix_sort_v4
+CC=g++ -O2 -Wall
+CFLAGS=
+LDFLAGS=-L../systemc-2.3.0/lib-linux -lsystemc -lpthread
+EXEC=main
+SRC=./src/main.cpp \
+	./src/DataIn.cpp \
+	./src/DataOut \
+	./src/RadixSort \
+	./src/CheckSort \
 
-CC 		= gcc
+OBJ= $(SRC:.cpp=.o)
 
-CFLAGS 		= -W -Wall -std=c99 -O3
+CFLAGS=
 
-LINKER 		= gcc -o 
+all: $(EXEC)
+	./bin/main && eog *.bmp
 
-LFLAGS 		= -Wall -O3
+main: $(OBJ)
+	$(CC) $(CFLAGS) -o ./bin/$@ $^ $(LDFLAGS)
 
-SRCDIR 		= src
-OBJDIR 		= obj
-BINDIR 		= bin
+%.o: %.cpp
+	$(CC) $(CFLAGS) -o $@ -c $< $(CFLAGS)
 
-SOURCES 	:= $(wildcard $(SRCDIR)/*.c)
-INCLUDES 	:= $(wildcard $(SRCDIR)/*.h)
-OBJECTS 	:= $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
-rm 			= rm -f
+.PHONY: clean mrproper
 
-all: $(BINDIR)/$(TARGET)
+clean: $(OBJ)
+	rm ./src/*.o
 
-$(BINDIR)/$(TARGET): $(OBJECTS)
-	@$(LINKER) $@ $(OBJECTS) $(LFLAGS) 
-
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-.PHONY: clean
-clean:
-	@$(rm) $(OBJECTS)
-
-.PHONY: remove
-remove: clean
-	@$(rm) $(BINDIR)/$(TARGET)
-
+mrproper: clean
+	rm $(EXEC)

@@ -1,16 +1,18 @@
-#include "radix_sort.h"
-#include "datain.h"
+#include "RadixSort.h"
+#include "DataIn.h"
+#include "CheckSort.h"
+#include "DataOut.h"
 
 #include <iostream>
-#include <math.h>
 
 using namespace std;
 
 int main (int argc, char * argv []){
+	
 	cout << "Init components..." << endl;
-		DataIn      		gene	("Data_to_sort");
-		Radix_sort 		sort 	("Radix_sorting");
-		Check_sort 		check	("Check_sorting");
+		DataIn      	gene	("Data_to_sort");
+		RadixSort 		sort 	("Radix_sorting");
+		CheckSort 		check	("Check_sorting");
 		DataOut			term	("Data_sorted");
 
 	cout << "Create link signals..." << endl;
@@ -20,16 +22,16 @@ int main (int argc, char * argv []){
 		sc_fifo< sc_uint<DATA_TYPE> >	s3("FIFO_3", ARRAY_SIZE);
 
 	cout << "Mapping components..." << endl;
-		DataIn.s(s1);	
+		gene.s(s1);	
 
-		Radix_sort.clk(sclk);
-		Radix_sort.i_data(s1);
-		Radix_sort.o_data(s2);
+		sort.clk(sclk);
+		sort.i_data(s1);
+		sort.o_data(s2);
 		
-		Check_sort.e(s2);
-		Check_sort.s(s3);
+		check.e(s2);
+		check.s(s3);
 
-		DataOut.e(s3);
+		term.e(s3);
 
 	cout << "Running circuit simulation..." << endl;
 		sc_start(100,SC_MS);

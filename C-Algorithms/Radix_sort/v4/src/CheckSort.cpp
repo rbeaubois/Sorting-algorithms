@@ -1,6 +1,6 @@
-#include "check_sort.h"
+#include "CheckSort.h"
 
-void Check_sort::do_check(){
+void CheckSort::do_check(){
 	sc_uint<DATA_TYPE> > last_data;
 	sc_uint<DATA_TYPE> > data;
 	last_data = e.read();

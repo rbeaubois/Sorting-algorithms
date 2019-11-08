@@ -1,4 +1,4 @@
-#include "dataout.h"
+#include "DataOut.h"
 
 void DataOut::do_print(){
     ofstream fdata;
