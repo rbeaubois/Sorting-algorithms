@@ -28,7 +28,7 @@
 
 /* ********************************* Radix sort by byte **************************************** */
 // Sort for every byte
-void radix_sort(unsigned int *array1, unsigned int *array2, int n);
+void radix_sort(unsigned int *array1, int n);
 
 // Sort by byte
 void count_sort(unsigned int *array_src, unsigned int *array_dst, int n, unsigned int shift);

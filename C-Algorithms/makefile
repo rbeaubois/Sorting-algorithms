@@ -1,6 +1,6 @@
 TARGET 		= main
 
-CC 			= gcc
+CC 		= gcc
 
 CFLAGS 		= -W -Wall -fopenmp -O3
 
@@ -15,7 +15,7 @@ BINDIR 		= bin
 SOURCES 	:= $(wildcard $(SRCDIR)/*.cpp)
 INCLUDES 	:= $(wildcard $(SRCDIR)/*.h)
 OBJECTS 	:= $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
-rm 			= rm -f
+rm 		= rm -f
 
 all: $(BINDIR)/$(TARGET)
 

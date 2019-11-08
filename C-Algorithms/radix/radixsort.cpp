@@ -2,8 +2,9 @@
 
 /* ********************************* Radix sort by byte **************************************** */
 // Sort for every byte
-void radix_sort(unsigned int *array1, unsigned int *array2, int n){
+void radix_sort(unsigned int *array1, int n){
     unsigned int shift = 0;
+    unsigned int *array2 = malloc(ARRAY_SIZE*sizeof(unsigned int));
     count_sort(array1, array2, n, shift);
     shift+=SHIFT;
     count_sort(array2, array1, n, shift);
@@ -11,6 +12,7 @@ void radix_sort(unsigned int *array1, unsigned int *array2, int n){
     count_sort(array1, array2, n, shift);
     shift+=SHIFT;   
     count_sort(array2, array1, n, shift); 
+    free(array2);
 }
 
 // Sort by byte
