@@ -24,17 +24,17 @@
 #define B_BYTE          8
 #define SHIFT           B_BYTE     
 
-SC_MODULE(Radix_sort)
+SC_MODULE(RadixSort)
 {
-public:
   sc_in         <bool>                    clk;
   sc_fifo_in    < sc_uint<DATA_TYPE> >    i_data;
   sc_fifo_out   < sc_uint<DATA_TYPE> >    o_data;
 
-	SC_CTOR(Radix_sort)
+	SC_CTOR(RadixSort)
 	{
 		SC_CTHREAD(do_sort, clk);
 	}
 
-    void do_sort();
+  void do_sort();
+
  };
