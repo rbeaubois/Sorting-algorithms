@@ -1,4 +1,4 @@
-#include "radix_sort.h"
+#include "RadixSort.h"
 
 void count_sort(sc_uint<DATA_TYPE> *array_src, sc_uint<DATA_TYPE> *array_dst, sc_uint<ADDR_SIZE> n, sc_uint<8> shift){
     sc_uint<ADDR_SIZE> i = 0;
@@ -33,7 +33,7 @@ void radix_sort_byte(sc_uint<DATA_TYPE> *array1, sc_uint<DATA_TYPE> *array2, sc_
     count_sort(array2, array1, n, shift); 
 }
 
-void Radix_sort::do_sort(){
+void RadixSort::do_sort(){
 	sc_uint<DATA_TYPE> array1[ARRAY_SIZE];
 	sc_uint<DATA_TYPE> array2[ARRAY_SIZE];
     sc_uint<ADDR_SIZE> i = 0;
