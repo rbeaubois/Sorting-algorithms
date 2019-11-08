@@ -1,0 +1,32 @@
+#include <iostream>
+#include <unistd.h>
+
+using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "bubble/bubble.h"
+
+#define NBR_DATA 64000
+
+void loadFile(char* name, unsigned int data[], int len) {
+    FILE* f = fopen(name, "r");
+    unsigned int v = 0;
+    for(int i = 0; i < len; i++) {
+        fscanf(f, "%u", data+i);
+    }
+    fclose(f);
+}
+
+int main() {
+
+    //Load random data
+    char name[] = "../data/random.txt";
+    unsigned int data[NBR_DATA];
+    loadFile(name, data, NBR_DATA);
+
+    //Test sort
+    Buble b;
+    cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
+    return 0;
+}
