@@ -4,9 +4,9 @@ LDFLAGS=-L../systemc-2.3.0/lib-linux -lsystemc -lpthread
 EXEC=main
 SRC=./src/main.cpp \
 	./src/DataIn.cpp \
-	./src/DataOut \
-	./src/RadixSort \
-	./src/CheckSort \
+	./src/DataOut.cpp \
+	./src/RadixSort.cpp \
+	./src/CheckSort.cpp \
 
 OBJ= $(SRC:.cpp=.o)
 

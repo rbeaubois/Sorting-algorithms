@@ -1,4 +1,4 @@
-#include "RadixSort.h"
+#include "Constants.h"
 #include "systemc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +8,7 @@
 
 SC_MODULE(DataOut)
 {
-	sc_fifo_out< sc_uint<DATA_TYPE> > e;
+	sc_fifo_in < sc_uint<DATA_TYPE> > e;
 
 	SC_CTOR(DataOut)
 	{
