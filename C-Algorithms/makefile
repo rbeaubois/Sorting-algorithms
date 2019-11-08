@@ -1,12 +1,12 @@
-TARGET 		= out
+TARGET 		= main
 
-CC 			= g++
+CC 			= gcc
 
-CFLAGS 		= -g -W -Wall
+CFLAGS 		= -W -Wall -fopenmp -O3
 
-LINKER 		= g++ -o
+LINKER 		= gcc -o
 
-LFLAGS 		= -Wall -I.
+LFLAGS 		= -Wall -I. -fopenmp -lm
 
 SRCDIR 		= src
 OBJDIR 		= obj
@@ -14,15 +14,15 @@ BINDIR 		= bin
 
 SOURCES 	:= $(wildcard $(SRCDIR)/*.cpp)
 INCLUDES 	:= $(wildcard $(SRCDIR)/*.h)
-OBJECTS 	:= $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+OBJECTS 	:= $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 rm 			= rm -f
 
 all: $(BINDIR)/$(TARGET)
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
-	@$(LINKER) $@ $(OBJECTS) $(LFLAGS) 
+	@$(LINKER) $@ $(OBJECTS) $(LFLAGS)
 
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
+$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
