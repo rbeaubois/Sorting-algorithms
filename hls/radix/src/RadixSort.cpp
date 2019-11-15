@@ -33,22 +33,26 @@ void radix_sort_byte(sc_uint<DATA_TYPE> *array1, sc_uint<DATA_TYPE> *array2, sc_
     count_sort(array2, array1, n, shift); 
 }
 
+
 void RadixSort::do_sort(){
-	sc_uint<DATA_TYPE> array1[ARRAY_SIZE];
-	sc_uint<DATA_TYPE> array2[ARRAY_SIZE];
+	// To fix -> arrays = core dump.
+    //sc_uint<DATA_TYPE> array1[ARRAY_SIZE];
+	//sc_uint<DATA_TYPE> array2[ARRAY_SIZE];
 	sc_uint<ADDR_SIZE> i = 0;
 
 	while( true ){
+            cout << "jambon";
+
             for (i = 0; i < ARRAY_SIZE; i++)
             {
-                array1[i] = i_data.read();   
+                //array1[i] = e.read();   
             }
 
-			radix_sort_byte(array1, array2, ARRAY_SIZE);
+			//radix_sort_byte(array1, array2, ARRAY_SIZE);
 
             for (i = 0; i < ARRAY_SIZE; i++)
             {
-                o_data.write(array1[i]);
+                //s.write(array1[i]);
             }
 	}
 }

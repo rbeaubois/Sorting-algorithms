@@ -7,6 +7,7 @@ using namespace std;
 
 #include "bubble/bubble.h"
 #include "quick/quick.h"
+#include "radix/radix.h"
 
 #define NBR_DATA 64000
 
@@ -32,7 +33,9 @@ int main(int argc, char* argv[]) {
     loadFile(name, data, NBR_DATA);
 
     //Test sort
-    Quick b;
-    cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
+    Bubble b;
+    Radix r;
+    //cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
+    cout << "Result: " <<  r.process(data, NBR_DATA) << endl;
     return 0;
 }

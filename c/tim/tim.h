@@ -1,9 +1,8 @@
-#ifndef INSERTION_H
-#define INSERTION_H
-
+#ifndef TIM_H
+#define TIM_H
 #include "../comparator.h"
 
-class Insertion : public Comparator{
+class Tim : public Comparator{
 private:
     virtual unsigned int* sort(unsigned int data[], int len);
 };

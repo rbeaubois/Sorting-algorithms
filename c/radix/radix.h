@@ -1,10 +1,9 @@
+#ifndef RADIX_H
+#define RADIX_H
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-
-// Number of elements
-#define ARRAY_SIZE      64000
+#include "../comparator.h"
 
 // Type of data
 #define U_INT           32
@@ -33,8 +32,6 @@ void radix_sort(unsigned int *array1, int n);
 // Sort by byte
 void count_sort(unsigned int *array_src, unsigned int *array_dst, int n, unsigned int shift);
 
-
-
 /* ********************************* Radix sort by digit  **************************************** */
 // Sort by digit for every digit
 void radix_sort_digit(unsigned int *array, int n);
@@ -45,3 +42,10 @@ void count_sort_digit(unsigned int *array, int n, unsigned int exp);
 // Get max to know number of digits
 unsigned int get_max(unsigned int *array, int n);
 
+/* ********************************* Implement comparator class  **************************************** */
+class Radix : public Comparator{
+private:
+    virtual unsigned int* sort(unsigned int data[], int len);
+};
+
+#endif

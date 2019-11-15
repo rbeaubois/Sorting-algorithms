@@ -4,6 +4,9 @@
 #include "../comparator.h"
 
 class Trident : public Comparator {
+	public:
+		Trident();
+		~Trident();
 	private:
 		unsigned int* sort(unsigned int data[], int len);
 };
