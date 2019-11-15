@@ -1,4 +1,4 @@
-#include "tab.h"
+#include "file2tab.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
