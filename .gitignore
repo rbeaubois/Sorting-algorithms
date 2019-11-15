@@ -3,5 +3,5 @@
 
 bin/
 obj/
-
+.vscode
 C-Algorithms/radix_backup
