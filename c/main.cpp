@@ -6,6 +6,7 @@ using namespace std;
 #include <stdlib.h>
 
 #include "bubble/bubble.h"
+#include "radix/radix.h"
 
 #define NBR_DATA 64000
 
@@ -30,6 +31,7 @@ int main(int argc, char* argv[]) {
 
     //Test sort
     Bubble b;
+    Radix r;
     cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
     return 0;
 }

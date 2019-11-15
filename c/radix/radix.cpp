@@ -1,10 +1,16 @@
-#include "radixsort.h"
+#include "radix.h"
+
+/* ********************************* Implement radix sort  **************************************** */
+unsigned int* Radix::sort(unsigned int data[], int len) {
+	radix_sort(data, len);
+	return data;
+}
 
 /* ********************************* Radix sort by byte **************************************** */
 // Sort for every byte
 void radix_sort(unsigned int *array1, int n){
     unsigned int shift = 0;
-    unsigned int *array2 = (unsigned int*)malloc(ARRAY_SIZE*sizeof(unsigned int));
+    unsigned int *array2 = (unsigned int*)malloc(n*sizeof(unsigned int));
     count_sort(array1, array2, n, shift);
     shift+=SHIFT;
     count_sort(array2, array1, n, shift);
