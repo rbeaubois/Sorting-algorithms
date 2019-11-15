@@ -6,6 +6,7 @@ using namespace std;
 #include <stdlib.h>
 
 #include "bubble/bubble.h"
+#include "quick/quick.h"
 
 #define NBR_DATA 64000
 
@@ -16,7 +17,9 @@ void loadFile(char* name, unsigned int data[], int len) {
         exit(0);
     }
     for(int i = 0; i < len; i++) {
-        fscanf(f, "%u", data+i);
+        unsigned int v;
+        fscanf(f, "%u", &v);
+        data[i] = v;
     }
     fclose(f);
 }
@@ -29,7 +32,7 @@ int main(int argc, char* argv[]) {
     loadFile(name, data, NBR_DATA);
 
     //Test sort
-    Bubble b;
+    Quick b;
     cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
     return 0;
 }

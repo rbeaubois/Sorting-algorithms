@@ -16,6 +16,7 @@ void Comparator::check(unsigned int data[], int len) {
     unsigned long nbrE = 0;
     for(int i = 1; i < len; i++) {
         nbrE+=(data[i-1]>data[i]);
+        if(data[i-1]>data[i])cout << i << " " << data[i-1] << " " << data[i] << endl;
     }
     if (nbrE) {
         cout << "Sort error: " << nbrE << "values have not been sorted" << endl;
