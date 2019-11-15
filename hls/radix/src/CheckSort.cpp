@@ -1,8 +1,8 @@
 #include "CheckSort.h"
 
 void CheckSort::do_check(){
-	sc_uint<DATA_TYPE> > last_data;
-	sc_uint<DATA_TYPE> > data;
+	sc_uint<DATA_TYPE> last_data;
+	sc_uint<DATA_TYPE> data;
 	last_data = e.read();
 	s.write(last_data);
 	while( true ){
