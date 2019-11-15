@@ -5,3 +5,6 @@ bin/
 obj/
 
 makefile_perso
+
+.vscode
+C-Algorithms/radix_backup

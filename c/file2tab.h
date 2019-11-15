@@ -12,7 +12,7 @@ private:
     vector<unsigned int> tab;
     int nb_to_show;
 public:
-    file2tab(string filename, int nb, int tabl[]);
+    file2tab(string filename, int nb, unsigned int tabl[]);
     ~file2tab();
     void printTab();
     void setLen(int nb_to_show);

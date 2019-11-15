@@ -1,6 +1,6 @@
 CC=g++ -O2 -Wall
 CFLAGS=
-LDFLAGS=-L../systemc-2.3.0/lib-linux -lsystemc -lpthread
+LDFLAGS=-L../systemc-2.3.3/lib-linux -lsystemc -lpthread
 EXEC=main
 SRC=./src/main.cpp \
 	./src/DataIn.cpp \
