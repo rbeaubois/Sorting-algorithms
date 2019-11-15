@@ -11,14 +11,17 @@ using namespace std;
 
 void loadFile(char* name, unsigned int data[], int len) {
     FILE* f = fopen(name, "r");
-    unsigned int v = 0;
+    if (f == NULL) {
+        cout << "Error opening file" << endl;
+        exit(0);
+    }
     for(int i = 0; i < len; i++) {
         fscanf(f, "%u", data+i);
     }
     fclose(f);
 }
 
-int main() {
+int main(int argc, char* argv[]) {
 
     //Load random data
     char name[] = "../data/random.txt";
