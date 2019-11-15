@@ -1,5 +1,6 @@
 #ifndef INSERTION_H
 #define INSERTION_H
+
 #include "../comparator.h"
 
 class Insertion : public Comparator{
