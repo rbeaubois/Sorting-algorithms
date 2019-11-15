@@ -8,10 +8,10 @@
 
 using namespace std;
 
-int main (int argc, char * argv []){
+int sc_main (int argc, char * argv []){
 	
 	cout << "Init components..." << endl;
-		DataIn      	gene	("Data_to_sort");
+		DataIn      		gene	("Data_to_sort");
 		RadixSort 		sort 	("Radix_sorting");
 		CheckSort 		check	("Check_sorting");
 		DataOut			term	("Data_sorted");

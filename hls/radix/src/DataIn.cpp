@@ -7,7 +7,7 @@ void DataIn::do_gen(){
     string tmp;
     string buf;
     sc_uint<DATA_TYPE> data;
-    fdata.open("../../../Data/random.txt");
+    fdata.open("../../data/random.txt");
     getline(fdata, tmp, 'r');
     cin >> buf;
 
