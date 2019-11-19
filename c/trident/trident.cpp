@@ -44,6 +44,7 @@ void bitonicsort(unsigned int* data, unsigned int step) {
 			unsigned int swap_interval = 1 << (i-j);
 			//printf("\t\tswap_interval: %d\n", swap_interval);
 			if (j==0) {
+#pragma omp parallel for
 				for (unsigned int k = 0; k < tsize; k += group_size) {
 					for (unsigned l = 0; l < swap_interval; l++) {
 						//printf("\t\te[%d] <-> e[%d]\n", k+l, k-l+group_size-1);
@@ -51,6 +52,7 @@ void bitonicsort(unsigned int* data, unsigned int step) {
 					}
 				}
 			} else {
+#pragma omp parallel for
 				for (unsigned int k = 0; k < tsize; k += group_size) {
 					for (unsigned l = 0; l < swap_interval; l++) {
 						//printf("\t\te[%d] <-> e[%d]\n", k+l, k+l+swap_interval);

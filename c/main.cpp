@@ -1,14 +1,17 @@
 #include <iostream>
-#include <unistd.h>
 
 using namespace std;
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+#include <omp.h>
 
 #include "bubble/bubble.h"
 #include "trident/trident.h"
 #include "radix/radix.h"
 
+#define NB_THREADS 4
 #define NBR_DATA (1<<15)
 
 #define TRIDENT
@@ -26,6 +29,9 @@ void loadFile(char* name, unsigned int data[], int len) {
 }
 
 int main(int argc, char* argv[]) {
+
+	//init
+	omp_set_num_threads(NB_THREADS);
 
     //Load random data
     char name[] = "../data/random.txt";
