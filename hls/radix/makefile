@@ -13,7 +13,7 @@ OBJ= $(SRC:.cpp=.o)
 CFLAGS=
 
 all: $(EXEC)
-	./bin/main && eog *.bmp
+	./bin/main
 
 main: $(OBJ)
 	$(CC) $(CFLAGS) -o ./bin/$@ $^ $(LDFLAGS)

@@ -6,7 +6,7 @@ void CheckSort::do_check(){
 	last_data = e.read();
 	s.write(last_data);
 	while( true ){
-		for(int i= 1 ; i < ARRAY_SIZE ;  i++);
+		for(int i= 0 ; i < ARRAY_SIZE ;  i++);
 		data = e.read();
 
 		if(last_data > data)

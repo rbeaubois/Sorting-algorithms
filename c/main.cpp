@@ -7,6 +7,7 @@ using namespace std;
 
 #include "bubble/bubble.h"
 #include "trident/trident.h"
+#include "radix/radix.h"
 
 #define NBR_DATA (1<<15)
 
@@ -32,11 +33,14 @@ int main(int argc, char* argv[]) {
     loadFile(name, data, NBR_DATA);
 
     //Test sort
-#ifdef TRIDENT
-    Trident s;
-#endif
 #ifdef BUBBLE
     Bubble s;
+#endif
+#ifdef RADIX
+    Radix s;
+#endif
+#ifdef TRIDENT
+    Trident s;
 #endif
     cout << "Result: " << endl << s.process(data, NBR_DATA) << endl;
     return 0;
