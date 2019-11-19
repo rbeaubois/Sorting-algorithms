@@ -6,8 +6,11 @@ using namespace std;
 #include <stdlib.h>
 
 #include "bubble/bubble.h"
+#include "trident/trident.h"
 
-#define NBR_DATA 64000
+#define NBR_DATA (1<<15)
+
+#define TRIDENT
 
 void loadFile(char* name, unsigned int data[], int len) {
     FILE* f = fopen(name, "r");
@@ -29,7 +32,12 @@ int main(int argc, char* argv[]) {
     loadFile(name, data, NBR_DATA);
 
     //Test sort
-    Bubble b;
-    cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
+#ifdef TRIDENT
+    Trident s;
+#endif
+#ifdef BUBBLE
+    Bubble s;
+#endif
+    cout << "Result: " << endl << s.process(data, NBR_DATA) << endl;
     return 0;
 }
