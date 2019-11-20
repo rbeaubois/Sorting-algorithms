@@ -13,19 +13,7 @@ Trident::~Trident() {
 }
 
 unsigned int* Trident::sort(unsigned int data[], int len) {
-	/*
-	for (int i = 0; i<len; i++) {
-		printf("%8x\t", data[i]);
-	}
-	printf("\n");
-	*/
-	bitonicsort(data, 15);
-	/*
-	for (int i = 0; i<len; i++) {
-		printf("%8x\t", data[i]);
-	}
-	printf("\n");
-	*/
+	bitonicsort(data, 20);
 	return data;
 }
 
@@ -33,39 +21,26 @@ void qs_divide(unsigned int data[], int len) {
 	
 }
 
-void bitonicsort(unsigned int* data, unsigned int step) {
-	unsigned int tsize = (1<<step);
+void bitonicsort(unsigned int* const data, unsigned int const step) {
+	unsigned int const tsize = (1<<step);
 	for (unsigned int i = 0; i < step; i++) {
-		//printf("step: %d\n", i);
-		for (unsigned int j = 0; j <= i; j++) {
-			//printf("\tsubstep: %d\n", j);
-			int group_size = 1<<(i-j+1);
-			//printf("\t\tgroup_size: %d\n", group_size);
-			unsigned int swap_interval = 1 << (i-j);
-			//printf("\t\tswap_interval: %d\n", swap_interval);
-			if (j==0) {
+		unsigned int si = 1 << i;	//si = 1<<(i-j);
+		unsigned int gs = si << 1;	//gs = 1<<(i-j+1)
 #pragma omp parallel for
-				for (unsigned int k = 0; k < tsize; k += group_size) {
-					for (unsigned l = 0; l < swap_interval; l++) {
-						//printf("\t\te[%d] <-> e[%d]\n", k+l, k-l+group_size-1);
-						swapcmp(&data[k+l], &data[k-l+group_size-1]);
-					}
-				}
-			} else {
+		for (unsigned int k = 0; k < tsize; k += gs) {
+			for (unsigned int l = 0; l < si; l++) {
+				swapcmp(&data[k+l], &data[k-l+gs-1]);
+			}
+		}
+		for (unsigned int j = 1; j <= i; j++) {
+			gs >>= 1;
+			si >>= 1;
 #pragma omp parallel for
-				for (unsigned int k = 0; k < tsize; k += group_size) {
-					for (unsigned l = 0; l < swap_interval; l++) {
-						//printf("\t\te[%d] <-> e[%d]\n", k+l, k+l+swap_interval);
-						swapcmp(&data[k+l], &data[k+l+swap_interval]);
-					}
+			for (unsigned int k = 0; k < tsize; k += gs) {
+				for (unsigned l = 0; l < si; l++) {
+					swapcmp(&data[k+l], &data[k+l+si]);
 				}
 			}
-			/*
-			for (unsigned int u = 0; u < tsize; u++) {
-				printf("%8x\t", data[u]);
-			}
-			printf("\n\n");
-			*/
 		}
 	}
 }

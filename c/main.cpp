@@ -7,12 +7,13 @@ using namespace std;
 
 #include <omp.h>
 
+#include "file2tab.h"
 #include "bubble/bubble.h"
 #include "trident/trident.h"
 #include "radix/radix.h"
 
 #define NB_THREADS 4
-#define NBR_DATA (1<<15)
+#define NB_DATA (1<<20)
 
 #define TRIDENT
 
@@ -34,9 +35,8 @@ int main(int argc, char* argv[]) {
 	omp_set_num_threads(NB_THREADS);
 
     //Load random data
-    char name[] = "../data/random.txt";
-    unsigned int data[NBR_DATA];
-    loadFile(name, data, NBR_DATA);
+    unsigned int data[NB_DATA];
+	file2tab f2t("../data/random.txt", NB_DATA, data);
 
     //Test sort
 #ifdef BUBBLE
@@ -48,6 +48,7 @@ int main(int argc, char* argv[]) {
 #ifdef TRIDENT
     Trident s;
 #endif
-    cout << "Result: " << endl << s.process(data, NBR_DATA) << endl;
+	int duration = s.process(data, NB_DATA);
+    cout << "Execution time: \t" << duration << "us" << endl;
     return 0;
 }

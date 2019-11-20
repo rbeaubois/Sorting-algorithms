@@ -6,6 +6,8 @@ obj/
 build/
 
 makefile_perso
+random.txt
+main
 
 .vscode
 C-Algorithms/radix_backup

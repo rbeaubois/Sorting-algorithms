@@ -9,7 +9,7 @@ int Comparator::process(unsigned int d[], int len) {
     sort(d, len);
     auto end = chrono::steady_clock::now();
     check(d, len);
-    return chrono::duration_cast<chrono::milliseconds>(end-start).count();
+    return chrono::duration_cast<chrono::microseconds>(end-start).count();
 }
 
 void Comparator::check(unsigned int data[], int len) {
@@ -18,6 +18,6 @@ void Comparator::check(unsigned int data[], int len) {
         nbrE+=(data[i-1]>data[i]);
     }
     if (nbrE) {
-        cout << "Sort error: " << nbrE << "values have not been sorted" << endl;
+        cout << "Sort error: " << nbrE << " values are not sorted" << endl;
     }
 }
