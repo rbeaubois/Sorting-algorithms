@@ -21,7 +21,7 @@ void file2tab::setLen(int nb_to_show)
 
 void file2tab::vector2tab(unsigned int tab[])
 {
-    for(int i = 0; i < this->tab.size(); i++ )
+    for(unsigned int i = 0; i < this->tab.size(); i++ )
     {
         tab[i] = this->tab.at(i);
     }
