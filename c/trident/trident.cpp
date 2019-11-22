@@ -24,7 +24,7 @@ void qs_divide(unsigned int data[], int len) {
 void bitonicsort(unsigned int* const data, unsigned int const step) {
 	unsigned int const tsize = (1<<step);
 	for (unsigned int i = 0; i < step; i++) {
-		unsigned int si = 1 << i;	//si = 1<<(i-j);
+		unsigned int si = 1 << i;	//si = 1<<(i-j)
 		unsigned int gs = si << 1;	//gs = 1<<(i-j+1)
 #pragma omp parallel for
 		for (unsigned int k = 0; k < tsize; k += gs) {
@@ -41,6 +41,24 @@ void bitonicsort(unsigned int* const data, unsigned int const step) {
 					swapcmp(&data[k+l], &data[k+l+si]);
 				}
 			}
+		}
+	}
+}
+
+void batcheroddeven(unsigned int* const data, unsigned int const step) {
+	unsigned int const tsize = (1<<step);
+	for (unsigned int i = 0; i < step; i++) {
+		unsigned int si = 1 << i;	//si = 1<<(i-j)
+		unsigned int gs = si << 1;	//gs = 1<<(i-j+1)
+		for (unsigned int j = 0; j <= i; j++) {
+			/*
+#pragma omp parallel for
+			for (unsigned int k = 0; k < tsize; k += gs) {
+				for (unsigned int l = 0; l < si; l++) {
+					swapcmp(&data[k+l], &data[k+l+si]);
+				}
+			}
+			*/
 		}
 	}
 }
