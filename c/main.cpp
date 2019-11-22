@@ -10,12 +10,29 @@ using namespace std;
 #include "file2tab.h"
 #include "bubble/bubble.h"
 #include "trident/trident.h"
+#include "insertion/insertion.h"
+#include "quick/quick.h"
+#include "tim/tim.h"
+#include "selection/selection.h"
 #include "radix/radix.h"
 
 #define NB_THREADS 4
-#define NB_DATA (1<<20)
+#define NB_DATA 8
 
 #define TRIDENT
+
+namespace choix {
+
+    enum algo {
+        Trident=1,
+        Quick,
+        Selection,
+        Bubble,
+        Radix,
+        Insertion,
+        Tim
+    };
+}
 
 void loadFile(char* name, unsigned int data[], int len) {
     FILE* f = fopen(name, "r");
@@ -36,21 +53,50 @@ int main(int argc, char* argv[]) {
 	//init
 	omp_set_num_threads(NB_THREADS);
 
+    Comparator* s;
+
+    //Algo choice menu
+    int choice;
+    cout << "Choose your algorithm:\n\n";
+    cout << "1 - Bubble.\n";
+    cout << "2 - Insertion.\n";
+    cout << "3 - Quick.\n";
+    cout << "4 - Radix.\n";
+    cout << "5 - Selection.\n";
+    cout << "6 - Tim.\n";
+    cout << "Choice --> ";
+    cin >> choice;
+    cout << endl;
+
+    switch (choice) {
+    case choix::Bubble:
+        s = new Bubble();
+        break;
+    case choix::Insertion:
+        s = new Insertion();
+        break;
+    case choix::Quick:
+        s = new Quick();
+        break;
+    case choix::Radix:
+        s = new Radix();
+        break;
+    case choix::Selection:
+        s = new Selection();
+        break;
+    case choix::Tim:
+        s = new Tim();
+        break;
+    default:
+        cout << "Invalid choice.\n";
+    }
+
     //Load random data
     unsigned int data[NB_DATA];
 	file2tab f2t("../data/random.txt", NB_DATA, data);
 
-    //Test sort
-#ifdef BUBBLE
-    Bubble s;
-#endif
-#ifdef RADIX
-    Radix s;
-#endif
-#ifdef TRIDENT
-    Trident s;
-#endif
-	int duration = s.process(data, NB_DATA);
+
+	int duration = s->process(data, NB_DATA);
     cout << "Execution time: \t" << duration << "us" << endl;
     return 0;
 }
