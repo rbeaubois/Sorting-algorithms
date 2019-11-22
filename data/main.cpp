@@ -26,7 +26,7 @@ void generateFile(int n, bool hex) {
 
 int main(int argc, char *argv[]) {
     bool hex = false;
-    unsigned long nbr_data = 64000;
+    unsigned long nbr_data = (1<<16);
     if (argc == 3) {
         hex = argv[2][0]=='h';
     }

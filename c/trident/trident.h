@@ -11,4 +11,7 @@ class Trident : public Comparator {
 		unsigned int* sort(unsigned int data[], int len);
 };
 
+void bitonicsort(unsigned int* data, unsigned int step);
+inline void swapcmp(unsigned int* a, unsigned int* b);
+
 #endif

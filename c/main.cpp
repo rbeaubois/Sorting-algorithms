@@ -1,15 +1,21 @@
 #include <iostream>
-#include <unistd.h>
 
 using namespace std;
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
+#include <omp.h>
+
+#include "file2tab.h"
 #include "bubble/bubble.h"
-#include "quick/quick.h"
+#include "trident/trident.h"
 #include "radix/radix.h"
 
-#define NBR_DATA 64000
+#define NB_THREADS 4
+#define NB_DATA (1<<20)
+
+#define TRIDENT
 
 void loadFile(char* name, unsigned int data[], int len) {
     FILE* f = fopen(name, "r");
@@ -27,15 +33,24 @@ void loadFile(char* name, unsigned int data[], int len) {
 
 int main(int argc, char* argv[]) {
 
+	//init
+	omp_set_num_threads(NB_THREADS);
+
     //Load random data
-    char name[] = "../data/random.txt";
-    unsigned int data[NBR_DATA];
-    loadFile(name, data, NBR_DATA);
+    unsigned int data[NB_DATA];
+	file2tab f2t("../data/random.txt", NB_DATA, data);
 
     //Test sort
-    Bubble b;
-    Radix r;
-    //cout << "Result: " <<  b.process(data, NBR_DATA) << endl;
-    cout << "Result: " <<  r.process(data, NBR_DATA) << endl;
+#ifdef BUBBLE
+    Bubble s;
+#endif
+#ifdef RADIX
+    Radix s;
+#endif
+#ifdef TRIDENT
+    Trident s;
+#endif
+	int duration = s.process(data, NB_DATA);
+    cout << "Execution time: \t" << duration << "us" << endl;
     return 0;
 }
