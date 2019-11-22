@@ -24,13 +24,13 @@ using namespace std;
 namespace choix {
 
     enum algo {
-        Trident=1,
-        Quick,
-        Selection,
-        Bubble,
-        Radix,
+        Bubble=1,
         Insertion,
-        Tim
+        Quick,
+        Radix,
+        Selection,
+        Tim,
+        Trident
     };
 }
 
@@ -64,6 +64,7 @@ int main(int argc, char* argv[]) {
     cout << "4 - Radix.\n";
     cout << "5 - Selection.\n";
     cout << "6 - Tim.\n";
+    cout << "7 - Trident.\n\n";
     cout << "Choice --> ";
     cin >> choice;
     cout << endl;
@@ -86,6 +87,9 @@ int main(int argc, char* argv[]) {
         break;
     case choix::Tim:
         s = new Tim();
+        break;
+    case choix::Trident:
+        s = new Trident();
         break;
     default:
         cout << "Invalid choice.\n";
