@@ -22,8 +22,7 @@
 // Number of bits for the mask
 #define B_NIBBLE        4
 #define B_BYTE          8
-#define SHIFT           B_BYTE          
-
+#define SHIFT           B_BYTE       
 
 /* ********************************* Radix sort by byte **************************************** */
 // Sort for every byte

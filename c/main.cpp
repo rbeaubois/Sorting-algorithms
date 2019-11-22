@@ -17,7 +17,7 @@ using namespace std;
 #include "radix/radix.h"
 
 #define NB_THREADS 4
-#define NB_DATA 8
+#define NB_DATA 64000
 
 #define TRIDENT
 
