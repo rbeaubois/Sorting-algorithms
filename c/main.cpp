@@ -24,7 +24,9 @@ void loadFile(char* name, unsigned int data[], int len) {
         exit(0);
     }
     for(int i = 0; i < len; i++) {
-        fscanf(f, "%u", data+i);
+        unsigned int v;
+        fscanf(f, "%u", &v);
+        data[i] = v;
     }
     fclose(f);
 }
