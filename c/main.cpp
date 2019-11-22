@@ -69,6 +69,7 @@ int main(int argc, char* argv[]) {
     cin >> choice;
     cout << endl;
 
+
     switch (choice) {
     case choix::Bubble:
         s = new Bubble();
@@ -93,6 +94,7 @@ int main(int argc, char* argv[]) {
         break;
     default:
         cout << "Invalid choice.\n";
+        exit(1);
     }
 
     //Load random data
