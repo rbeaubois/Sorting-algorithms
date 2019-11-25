@@ -35,7 +35,7 @@ void count_sort(unsigned int *array_src, unsigned int *array_dst, int n, unsigne
     for (i = 1; i < NB_VALUES; i++) 
         count[i] += count[i - 1]; 
 
-    // Create output array 
+    // Fill output array 
     for (i = n - 1; i >= 0; i--) 
     { 
         array_dst[count[(array_src[i]>>shift)&MASK] - 1] = array_src[i]; 

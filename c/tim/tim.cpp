@@ -1,4 +1,4 @@
-
+#include "tim.h"
 #include <bits/stdc++.h>
 using namespace std;
 const int RUN = 32;
@@ -72,11 +72,11 @@ void merge(unsigned int arr[], int l, int m, int r)
 
 // iterative Timsort function to sort the
 // array[0...n-1] (similar to merge sort)
-unsigned int* sort(unsigned int tab[], int len)
+unsigned int* Tim::sort(unsigned int data[], int len)
 {
     // Sort individual subarrays of size RUN
     for (int i = 0; i < len; i += RUN)
-        insertionSort(tab, i, min((i + 31), (len - 1)));
+        insertionSort(data, i, min((i + 31), (len - 1)));
 
     // start merging from size RUN (or 32). It will merge
     // to form size 64, then 128, 256 and so on ....
@@ -95,8 +95,8 @@ unsigned int* sort(unsigned int tab[], int len)
 
             // merge sub array arr[left.....mid] &
             // arr[mid+1....right]
-            merge(tab, left, mid, right);
+            merge(data, left, mid, right);
         }
     }
-    return tab;
+    return data;
 }
