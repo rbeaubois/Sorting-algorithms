@@ -10,7 +10,7 @@ void CheckSort::do_check(){
 	debug_counter++;
 
 	while( true ){
-		for(int i= 0 ; i < ARRAY_SIZE ;  i++);
+		for(sc_uint<ADDR_SIZE> i= 0 ; i < ARRAY_SIZE ;  i++);
 		data = e.read();
 		debug_counter++;
 

@@ -15,7 +15,7 @@ void count_sort(sc_uint<DATA_TYPE> *array_src, sc_uint<DATA_TYPE> *array_dst, sc
         count[i] += count[i - 1]; 
 
     // Fill output array   
-    for (int j = n-1 ; j >= 0; j--) 
+    for (sc_int<ADDR_SIZE+1> j = n-1 ; j >= 0; j--) 
     { 
         count[array_src[j].range(SHIFT+shift-1,shift)]--;
         array_dst[count[array_src[j].range(SHIFT+shift-1,shift)]] = array_src[j];  
