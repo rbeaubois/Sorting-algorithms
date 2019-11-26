@@ -4,6 +4,7 @@
 bin/
 obj/
 build/
+*_project/
 
 makefile_perso
 random.txt
