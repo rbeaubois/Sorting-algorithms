@@ -4,8 +4,13 @@
 
 SC_MODULE(RadixSort)
 {
-  sc_fifo_in    < sc_uint<DATA_TYPE> > e;
-  sc_fifo_out   < sc_uint<DATA_TYPE> > s;
+private:
+    	sc_uint<DATA_TYPE> array1[ARRAY_SIZE];
+	sc_uint<DATA_TYPE> array2[ARRAY_SIZE];
+
+public:
+	sc_fifo_in    < sc_uint<DATA_TYPE> > e;
+	sc_fifo_out   < sc_uint<DATA_TYPE> > s;
 
 	SC_CTOR(RadixSort)
 	{

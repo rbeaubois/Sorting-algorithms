@@ -4,6 +4,9 @@
 
 void sort_recur(unsigned int data[], unsigned int a, unsigned int b) {
     if (b < a || b-a <=1)return;
+    unsigned int v = data[a];
+    data[a] = data[(a+b)/2];
+    data[(a+b)/2] = v;
     unsigned int key = data[a];
     unsigned int ikey = a;
     for(unsigned int i = a+1; i < b; i++) {
