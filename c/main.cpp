@@ -23,7 +23,12 @@ using namespace std;
 #define NB_DATA (1<<16)
 #define NBR_MED 10
 
-void foo(unsigned int* data);
+// Data splitter tests
+	void foo(unsigned int* data);
+// Randomize an array of size n
+	void randomize(unsigned int* data, int n);
+// Benchmarking a sort algorithm
+	void runBenchmark(Comparator *s, unsigned int* data, int n, string sort);
 
 int main(int argc, char* argv[]) {
 
@@ -31,8 +36,12 @@ int main(int argc, char* argv[]) {
 	omp_set_num_threads(NB_THREADS);
 
     //Load random data
-    unsigned int data[NB_DATA];
-	file2tab f2t("../data/random.txt", NB_DATA, data);
+    unsigned int* data = (unsigned int*)malloc(sizeof(unsigned int)*NB_DATA);
+	if(data == NULL){
+        fprintf(stderr, "Failed to allocate memory for data to sort");
+        exit(1);
+    }
+	randomize(data, NB_DATA);
 
     Comparator* s;
 
@@ -70,11 +79,31 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
+	if (!strcmp(argv[2], "bench"))
+	{
+		cout << "Start of benchmark" << endl;
+		runBenchmark(s, data, atoi(argv[3]), argv[1]);
+		cout << "End of benchmark" << endl;
+	}
+
 	int duration = s->process(data, NB_DATA);
     cout << "Execution time: \t" << duration << "us" << endl;
+	
+	free(data);
 	exit(0);
 }
 
+// Generate n random datas of type unsigned int
+void randomize(unsigned int* data, int n){
+    srand(time(NULL));
+
+    for(int i = 0; i < n; i++) {
+        data[i] = (rand()&0xFF) | (rand()&0xFF)<<8 |
+        (rand()&0xFF)<<16 | (rand()&0xFF)<<24;
+    }      
+}
+
+// Generate sorted blocks to avoid merge when using FPGA
 void foo(unsigned int* data) {
     unsigned int medians[NBR_MED];
     unsigned int imedians[NBR_MED];
@@ -99,4 +128,26 @@ void foo(unsigned int* data) {
     for(int i = 0; i < NBR_MED; i++) {
         cout << s.medians[i] << endl;
     }
+}
+
+// Benchmarking a sort algorithm
+void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
+{
+
+	string filename;
+	string dir = "../bench_results/";
+	filename = dir + sort + "_results.csv"; 
+
+	ofstream outfile;
+	outfile.open(filename);
+	char sep = ';';
+
+	for (int i = 4; i < n; i+= 64)
+	{
+		//cout << "Number of elts:" << i << endl;
+		int duration = s->process(data, i);
+		//cout << "Duration:" << duration << endl;
+		outfile << i << sep << duration << "\n" ;
+	}
+	outfile.close();
 }
