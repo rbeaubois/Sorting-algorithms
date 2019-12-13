@@ -8,7 +8,7 @@ using namespace std;
 
 #include <omp.h>
 
-#include "file2tab.h"
+#include "benchmark/benchmark.h"
 
 #include "bubble/bubble.h"
 #include "trident/trident.h"
@@ -25,10 +25,6 @@ using namespace std;
 
 // Data splitter tests
 	void foo(unsigned int* data);
-// Randomize an array of size n
-	void randomize(unsigned int* data, int n);
-// Benchmarking a sort algorithm
-	void runBenchmark(Comparator *s, unsigned int* data, int n, string sort);
 
 int main(int argc, char* argv[]) {
 
@@ -93,15 +89,7 @@ int main(int argc, char* argv[]) {
 	exit(0);
 }
 
-// Generate n random datas of type unsigned int
-void randomize(unsigned int* data, int n){
-    srand(time(NULL));
 
-    for(int i = 0; i < n; i++) {
-        data[i] = (rand()&0xFF) | (rand()&0xFF)<<8 |
-        (rand()&0xFF)<<16 | (rand()&0xFF)<<24;
-    }      
-}
 
 // Generate sorted blocks to avoid merge when using FPGA
 void foo(unsigned int* data) {
@@ -128,26 +116,4 @@ void foo(unsigned int* data) {
     for(int i = 0; i < NBR_MED; i++) {
         cout << s.medians[i] << endl;
     }
-}
-
-// Benchmarking a sort algorithm
-void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
-{
-
-	string filename;
-	string dir = "../bench_results/";
-	filename = dir + sort + "_results.csv"; 
-
-	ofstream outfile;
-	outfile.open(filename);
-	char sep = ';';
-
-	for (int i = 4; i < n; i+= 64)
-	{
-		//cout << "Number of elts:" << i << endl;
-		int duration = s->process(data, i);
-		//cout << "Duration:" << duration << endl;
-		outfile << i << sep << duration << "\n" ;
-	}
-	outfile.close();
 }
