@@ -11,22 +11,23 @@ void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
 	outfile.open(filename);
 	char sep = ';';
 
-    int tmp = 0, duration = 0, max = 0, min = INT32_MAX;
+    unsigned int tmp = 0, s_dur = 0, duration = 0, max = 0, min = UINT32_MAX;
 
 	for (int i = 4; i < n; i+= DATA_STEP)
 	{
-        tmp = 0;
-        max = 0;
-        min = INT32_MAX;
+        s_dur   = 0;
+        max     = 0;
+        min     = UINT32_MAX;
         for (int j = 0; j < AVERAGING; j++)
         {        
             //cout << "Number of elts:" << i << endl;
-            tmp += s->process(data, i);
-            max = (tmp>max)?tmp:max;
-            min = (tmp<min)?tmp:min;
+            tmp     = s->process(data, i);
+            max     = (tmp>max)?tmp:max;
+            min     = (tmp<min)?tmp:min;
+            s_dur   += tmp; 
             //cout << "Duration:" << duration << endl;
         }
-        duration = tmp/AVERAGING;
+        duration = s_dur/AVERAGING;
         outfile << i << sep << duration << sep << max << sep << min << "\n" ;
 	}
 	outfile.close();
