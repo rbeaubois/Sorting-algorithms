@@ -41,6 +41,15 @@ void count_sort_digit(unsigned int *array, int n, unsigned int exp);
 // Get max to know number of digits
 unsigned int get_max(unsigned int *array, int n);
 
+/* ********************************* Radix sort by byte with opti **************************************** */
+// Sort by byte but trying to use parallelisable operations (might be better for FPGA implementation)
+void radix_sort_v2(unsigned int *array1, int n);
+// Count occurences
+void count_occ_v2(unsigned int *array_src, int n, int c1[], int c2[], int c3[], int c4[]);
+// Sort by byte
+void sort_occ_v2(unsigned int *array_src, unsigned int *array_dst, int n, unsigned int shift, int count[]);
+
+
 /* ********************************* Implement comparator class  **************************************** */
 class Radix : public Comparator{
 private:

@@ -9,11 +9,12 @@
 
 SC_MODULE(DataOut)
 {
+	sc_in<bool> clk;
 	sc_fifo_in < sc_uint<DATA_TYPE> > e;
 
 	SC_CTOR(DataOut)
 	{
-		SC_THREAD(do_print);
+		SC_CTHREAD(do_print, clk);
 	}
 
 	void do_print();           // process

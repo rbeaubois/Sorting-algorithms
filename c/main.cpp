@@ -8,7 +8,7 @@ using namespace std;
 
 #include <omp.h>
 
-#include "file2tab.h"
+#include "benchmark/benchmark.h"
 
 #include "bubble/bubble.h"
 #include "trident/trident.h"
@@ -23,7 +23,8 @@ using namespace std;
 #define NB_DATA (1<<16)
 #define NBR_MED 10
 
-void foo(unsigned int* data);
+// Data splitter tests
+	void foo(unsigned int* data);
 
 int main(int argc, char* argv[]) {
 
@@ -31,8 +32,12 @@ int main(int argc, char* argv[]) {
 	omp_set_num_threads(NB_THREADS);
 
     //Load random data
-    unsigned int data[NB_DATA];
-	file2tab f2t("../data/random.txt", NB_DATA, data);
+    unsigned int* data = (unsigned int*)malloc(sizeof(unsigned int)*NB_DATA);
+	if(data == NULL){
+        fprintf(stderr, "Failed to allocate memory for data to sort");
+        exit(1);
+    }
+	randomize(data, NB_DATA);
 
     Comparator* s;
 
@@ -70,11 +75,23 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
+	if (!strcmp(argv[2], "bench"))
+	{
+		cout << "Start of benchmark" << endl;
+		runBenchmark(s, data, atoi(argv[3]), argv[1]);
+		cout << "End of benchmark" << endl;
+	}
+
 	int duration = s->process(data, NB_DATA);
     cout << "Execution time: \t" << duration << "us" << endl;
+	
+	free(data);
 	exit(0);
 }
 
+
+
+// Generate sorted blocks to avoid merge when using FPGA
 void foo(unsigned int* data) {
     unsigned int medians[NBR_MED];
     unsigned int imedians[NBR_MED];
