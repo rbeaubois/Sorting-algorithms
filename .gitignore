@@ -11,4 +11,5 @@ random.txt
 main
 
 .vscode
-C-Algorithms/radix_backup
+hls/radix/radix_sort/
+hls/radix/vivado_hls.log

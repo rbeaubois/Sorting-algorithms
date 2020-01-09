@@ -3,5 +3,5 @@
   <xd:arg xd:name="e" xd:originalName="e" xd:direction="in" xd:interfaceRef="e" xd:busTypeRef="acc_fifo"/>
   <xd:arg xd:name="s" xd:originalName="s" xd:direction="out" xd:interfaceRef="s" xd:busTypeRef="acc_fifo" xd:firstOut="17"/>
   <xd:latencyEstimates xd:best-case="0" xd:worst-case="1730058" xd:average-case="865029"/>
-  <xd:resourceEstimates xd:LUT="1512" xd:FF="582" xd:BRAM="260" xd:DSP="0"/>
+  <xd:resourceEstimates xd:LUT="1516" xd:FF="582" xd:BRAM="260" xd:DSP="0"/>
 </xd:acceleratorMap>

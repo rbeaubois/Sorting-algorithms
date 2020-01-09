@@ -6,8 +6,4 @@
 # ==============================================================
 
 
-Family       : artix7
-Device       : xc7a100t
-Package      : csg324
-Speed Grade  : -1
-Clock Period : 10.000 ns
+/home/Xilinx/Vivado/2018.2/bin/vivado  -notrace -mode batch -source run_ippack.tcl
