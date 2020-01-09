@@ -4,6 +4,7 @@
 bin/
 obj/
 build/
+misc/
 *_project/
 
 makefile_perso
