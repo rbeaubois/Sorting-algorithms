@@ -21,6 +21,11 @@ void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
     cerr << "\tRandom sets benched per step : " << NB_SETS << endl;
     cerr << "\tAveraging per set : " << AVERAGING << endl;
 
+    outfile << '#' << "Data set size:" << n << endl;
+    outfile << '#' << "Step:" << DATA_STEP << endl;
+    outfile << '#' << "Random sets benched per step:" << NB_SETS << endl;
+    outfile << '#' << "Averaging per set" << AVERAGING << endl;    
+
     // Multiple runs for a number of data from 4 to DATA_STEP
     // for (int h = 0; h < NB_SETS; h++)
     // {
