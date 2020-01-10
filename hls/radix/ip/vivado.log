@@ -1,16 +1,16 @@
 #-----------------------------------------------------------
-# Vivado v2019.1 (64-bit)
-# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
-# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Tue Nov 26 14:52:23 2019
-# Process ID: 10332
-# Current directory: C:/Users/lougu/Documents/ENSEIRB/3A/Sorting_algorithms/hls_radix/solution1/impl/ip
-# Command line: vivado.exe -notrace -mode batch -source run_ippack.tcl
-# Log file: C:/Users/lougu/Documents/ENSEIRB/3A/Sorting_algorithms/hls_radix/solution1/impl/ip/vivado.log
-# Journal file: C:/Users/lougu/Documents/ENSEIRB/3A/Sorting_algorithms/hls_radix/solution1/impl/ip\vivado.jou
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Jan  9 18:04:58 2020
+# Process ID: 12274
+# Current directory: /home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/radix/radix_sort/radix_sort_v1/impl/ip
+# Command line: vivado -notrace -mode batch -source run_ippack.tcl
+# Log file: /home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/radix/radix_sort/radix_sort_v1/impl/ip/vivado.log
+# Journal file: /home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/radix/radix_sort/radix_sort_v1/impl/ip/vivado.jou
 #-----------------------------------------------------------
 source run_ippack.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Tue Nov 26 14:52:49 2019...
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/Xilinx/Vivado/2018.2/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Thu Jan  9 18:05:06 2020...

@@ -12,25 +12,42 @@ void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
 	char sep = ';';
 
     unsigned int tmp = 0, s_dur = 0, duration = 0, max = 0, min = UINT32_MAX;
+    unsigned int timer = 0;
 
-	for (int i = 4; i < n; i+= DATA_STEP)
-	{
-        s_dur   = 0;
-        max     = 0;
-        min     = UINT32_MAX;
-        for (int j = 0; j < AVERAGING; j++)
-        {        
-            //cout << "Number of elts:" << i << endl;
-            tmp     = s->process(data, i);
-            max     = (tmp>max)?tmp:max;
-            min     = (tmp<min)?tmp:min;
-            s_dur   += tmp; 
-            //cout << "Duration:" << duration << endl;
-        }
-        duration = s_dur/AVERAGING;
-        outfile << i << sep << duration << sep << max << sep << min << "\n" ;
-	}
-	outfile.close();
+    cerr << "[Run]" << endl;
+    cerr << "\tNumber of random sets: " << NB_SETS << endl;
+    cerr << "\tNumber of data : 4 to " << n << endl;
+    cerr << "\tStep : " << DATA_STEP << endl;
+    cerr << "\tAveraging : " << AVERAGING << endl;
+
+    // Multiple runs for a number of data from 4 to DATA_STEP
+    for (int h = 0; h < NB_SETS; h++)
+    {
+        for (int i = 4; i < n; i+= DATA_STEP)
+        {
+            s_dur   = 0;
+            max     = 0;
+            min     = UINT32_MAX;
+
+            // Multiple runs for a given number of data
+            for (int j = 0; j < AVERAGING; j++)
+            {        
+                //cout << "Number of elts:" << i << endl;
+                tmp     = s->process(data, i);
+                max     = (tmp>max)?tmp:max;
+                min     = (tmp<min)?tmp:min;
+                s_dur   += tmp; 
+                //cout << "Duration:" << duration << endl;
+                timer++;
+            }
+
+            duration = s_dur/AVERAGING;
+            outfile << i << sep << duration << sep << max << sep << min << "\n" ;
+            print_progress(timer, n);
+        }        
+        randomize(data, n);
+    }
+    outfile.close();
 }
 
 // Generate n random datas of type unsigned int
@@ -41,4 +58,33 @@ void randomize(unsigned int* data, int n){
         data[i] = (rand()&0xFF) | (rand()&0xFF)<<8 |
         (rand()&0xFF)<<16 | (rand()&0xFF)<<24;
     }      
+}
+
+// Print time on terminal
+void print_progress(unsigned int timer, int n){
+    int progress;
+    unsigned char barWidth = 40;
+    progress = (barWidth*timer)/(AVERAGING*(n/DATA_STEP)*NB_SETS);
+
+    cerr << "[";
+    for (int i = 0; i < barWidth; i++)
+    {
+        if (progress>i)
+            cerr << "=";
+        else if(progress == i)
+            cerr << ">";
+        else
+            cerr << " ";      
+    }
+    cerr << "]";
+    cerr << ' ' <<  (100*progress)/barWidth << '%' << '\r';   
+
+    if(progress == barWidth){
+        cerr << "100%";
+        for (int i = 0; i < barWidth+10; i++)
+        {
+            cerr << " ";
+        }
+        cerr << endl;
+    } 
 }
