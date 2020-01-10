@@ -11,42 +11,72 @@ void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
 	outfile.open(filename);
 	char sep = ';';
 
-    unsigned int tmp = 0, s_dur = 0, duration = 0, max = 0, min = UINT32_MAX;
+    unsigned int tmp = 0 , duration = 0, max = 0, min = UINT32_MAX;
+    unsigned long s_dur = 0;
     unsigned int timer = 0;
 
     cerr << "[Run]" << endl;
-    cerr << "\tNumber of random sets: " << NB_SETS << endl;
-    cerr << "\tNumber of data : 4 to " << n << endl;
+    cerr << "\tSize of data sets : 4 to " << n << endl;
     cerr << "\tStep : " << DATA_STEP << endl;
-    cerr << "\tAveraging : " << AVERAGING << endl;
+    cerr << "\tRandom sets benched per step : " << NB_SETS << endl;
+    cerr << "\tAveraging per set : " << AVERAGING << endl;
 
     // Multiple runs for a number of data from 4 to DATA_STEP
-    for (int h = 0; h < NB_SETS; h++)
-    {
-        for (int i = 4; i < n; i+= DATA_STEP)
-        {
-            s_dur   = 0;
-            max     = 0;
-            min     = UINT32_MAX;
+    // for (int h = 0; h < NB_SETS; h++)
+    // {
+    //     for (int i = 4; i < n; i+= DATA_STEP)
+    //     {
+    //         s_dur   = 0;
+    //         max     = 0;
+    //         min     = UINT32_MAX;
+    // 
+    //         // Multiple runs for a given number of data
+    //         for (int j = 0; j < AVERAGING; j++)
+    //         {        
+    //             //cout << "Number of elts:" << i << endl;
+    //             tmp     = s->process(data, i);
+    //             max     = (tmp>max)?tmp:max;
+    //             min     = (tmp<min)?tmp:min;
+    //             s_dur   += tmp; 
+    //             //cout << "Duration:" << duration << endl;
+    //             timer++;
+    //         }
+    // 
+    //         duration = s_dur/AVERAGING;
+    //         outfile << i << sep << duration << sep << max << sep << min << "\n" ;
+    //         print_progress(timer, n);
+    //     }        
+    //     randomize(data, n);
+    // }
 
+
+    //Multiple runs for a number of data from 4 to DATA_STEP
+    for (int i = 4; i < n; i+= DATA_STEP)
+    {
+        s_dur   = 0;
+        max     = 0;
+        min     = UINT32_MAX;
+
+        for (int h = 0; h < NB_SETS; h++)
+        {
             // Multiple runs for a given number of data
             for (int j = 0; j < AVERAGING; j++)
             {        
-                //cout << "Number of elts:" << i << endl;
                 tmp     = s->process(data, i);
                 max     = (tmp>max)?tmp:max;
                 min     = (tmp<min)?tmp:min;
                 s_dur   += tmp; 
-                //cout << "Duration:" << duration << endl;
                 timer++;
             }
 
-            duration = s_dur/AVERAGING;
-            outfile << i << sep << duration << sep << max << sep << min << "\n" ;
-            print_progress(timer, n);
-        }        
-        randomize(data, n);
+            randomize(data, i);
+        }      
+
+        duration = s_dur/(AVERAGING*NB_SETS);
+        outfile << i << sep << duration << sep << max << sep << min << "\n" ;
+        print_progress(timer, n);
     }
+
     outfile.close();
 }
 
