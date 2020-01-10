@@ -25,10 +25,12 @@ read dat_nb
 cd c
 ./main "$sort" bench "$dat_nb"
 cd ..
+info="$(awk 'NR==1' bench_results/${sort}_results.csv)"
 touch plot.gnu
 cat bench_results/plt_tmp.txt >> bench_results/plot.gnu
 sed -i -e "s/image/$sort/g" bench_results/plot.gnu
 echo -e "set title \"CPU Benchmark results\"" >> bench_results/plot.gnu
+echo -e "set label \"${info}\" at graph 0.6, graph 0.95" >> bench_results/plot.gnu
 echo "Choose what to plot:"
 select plot_choice in Min Max All; do
     case $plot_choice in
