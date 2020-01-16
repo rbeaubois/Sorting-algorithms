@@ -12,4 +12,6 @@ main
 
 .vscode
 hls/radix/radix_sort/
-hls/radix/vivado_hls.log
+vivado/radix/
+hls/radix/hls_radix/
+hls/check_side_chan_axi/hls_project/
