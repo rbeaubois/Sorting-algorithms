@@ -12,4 +12,7 @@ random.txt
 main
 
 .vscode
-C-Algorithms/radix_backup
+hls/radix/radix_sort/
+vivado/radix/
+hls/radix/hls_radix/
+hls/check_side_chan_axi/hls_project/
