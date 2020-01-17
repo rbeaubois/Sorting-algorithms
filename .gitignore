@@ -1,11 +1,12 @@
 *.o
 *.exe
+*.log
 
 bin/
 obj/
 build/
-.misc/
 *_project/
+.misc/
 
 makefile_perso
 random.txt
