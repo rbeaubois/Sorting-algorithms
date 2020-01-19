@@ -5,6 +5,7 @@
 bin/
 obj/
 build/
+Packages/
 *_project/
 .misc/
 

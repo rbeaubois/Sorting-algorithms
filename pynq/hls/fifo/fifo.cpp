@@ -13,7 +13,8 @@ void HLS_accel(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS) {
 #pragma HLS INTERFACE axis port=M_AXIS
 
 	int i;
-	for (i = 0; i < 128; i++) {
+	//for (i = 0; i < 128; i++) {
+	while(1) {
 		AXI_VALUE val = S_AXIS->read();
 		val.data = (val.data + 1);
 		M_AXIS->write(val);

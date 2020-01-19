@@ -32,7 +32,7 @@
 #define RX_BUFFER_BASE		(MEM_BASE_ADDR + 0x00300000)
 #define RX_BUFFER_HIGH		(MEM_BASE_ADDR + 0x004FFFFF)
 
-#define MAX_PKT_LEN			0x200
+#define MAX_PKT_LEN			0x2000
 #define MARK_UNCACHEABLE	0x701
 
 #define TEST_START_VALUE	0x55
@@ -46,7 +46,11 @@ static void Uart550_Setup(void);
 #endif
 
 int AxiInit(XAxiDma* AxiDmaInstPtr);
-int AxiSendData(XAxiDma* AxiDmaInstPtr, uint32_t* txsrc, uint32_t nb);
-int AxiReadData(XAxiDma* AxiDmaInstPtr, uint32_t* rxdst, uint32_t nb);
+
+int AxiSendDone(XAxiDma* AxiDmaInstPtr);
+//int AxiReadyToRead(XAxiDma* AxiDmaInstPtr);
+
+int AxiSendData(XAxiDma* AxiDmaInstPtr, uint32_t* txsrc, size_t size);
+int AxiReadData(XAxiDma* AxiDmaInstPtr, uint32_t* rxdst, size_t size);
 
 #endif /* SRC_AXILIB_H_ */
