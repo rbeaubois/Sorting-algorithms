@@ -149,8 +149,8 @@ reg c4_we1;
 
 (* fsm_encoding = "none" *) reg   [7:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
-wire   [15:0] i_2_fu_219_p2;
-reg   [15:0] i_2_reg_369;
+wire   [16:0] i_2_fu_219_p2;
+reg   [16:0] i_2_reg_369;
 wire    ap_CS_fsm_state2;
 wire   [0:0] exitcond1_fu_213_p2;
 reg   [7:0] c1_addr_reg_379;
@@ -180,7 +180,7 @@ wire   [31:0] tmp_14_fu_354_p2;
 reg   [31:0] tmp_14_reg_477;
 wire   [31:0] tmp_15_fu_360_p2;
 reg   [31:0] tmp_15_reg_482;
-reg   [15:0] i_reg_191;
+reg   [16:0] i_reg_191;
 wire    ap_CS_fsm_state5;
 reg   [8:0] i_1_reg_202;
 wire    ap_CS_fsm_state8;
@@ -223,7 +223,7 @@ always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state5)) begin
         i_reg_191 <= i_2_reg_369;
     end else if (((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b1))) begin
-        i_reg_191 <= 16'd0;
+        i_reg_191 <= 17'd0;
     end
 end
 
@@ -596,11 +596,11 @@ assign c4_d0 = (32'd1 + c4_load_reg_414);
 
 assign c4_d1 = tmp_15_reg_482;
 
-assign exitcond1_fu_213_p2 = ((i_reg_191 == 16'd64000) ? 1'b1 : 1'b0);
+assign exitcond1_fu_213_p2 = ((i_reg_191 == 17'd65536) ? 1'b1 : 1'b0);
 
 assign exitcond_fu_308_p2 = ((i_1_reg_202 == 9'd256) ? 1'b1 : 1'b0);
 
-assign i_2_fu_219_p2 = (i_reg_191 + 16'd1);
+assign i_2_fu_219_p2 = (i_reg_191 + 17'd1);
 
 assign i_3_fu_336_p2 = (i_1_reg_202 + 9'd1);
 

@@ -81,13 +81,13 @@ architecture behav of count_occ_v2 is
     constant ap_const_lv32_3 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000011";
     constant ap_const_lv32_5 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000101";
     constant ap_const_lv32_6 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000110";
-    constant ap_const_lv16_0 : STD_LOGIC_VECTOR (15 downto 0) := "0000000000000000";
+    constant ap_const_lv17_0 : STD_LOGIC_VECTOR (16 downto 0) := "00000000000000000";
     constant ap_const_lv32_4 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000100";
     constant ap_const_lv32_7 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000111";
     constant ap_const_lv9_1 : STD_LOGIC_VECTOR (8 downto 0) := "000000001";
     constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
-    constant ap_const_lv16_FA00 : STD_LOGIC_VECTOR (15 downto 0) := "1111101000000000";
-    constant ap_const_lv16_1 : STD_LOGIC_VECTOR (15 downto 0) := "0000000000000001";
+    constant ap_const_lv17_10000 : STD_LOGIC_VECTOR (16 downto 0) := "10000000000000000";
+    constant ap_const_lv17_1 : STD_LOGIC_VECTOR (16 downto 0) := "00000000000000001";
     constant ap_const_lv32_8 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001000";
     constant ap_const_lv32_F : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001111";
     constant ap_const_lv32_10 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000010000";
@@ -103,8 +103,8 @@ architecture behav of count_occ_v2 is
     attribute fsm_encoding of ap_CS_fsm : signal is "none";
     signal ap_CS_fsm_state1 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
-    signal i_2_fu_219_p2 : STD_LOGIC_VECTOR (15 downto 0);
-    signal i_2_reg_369 : STD_LOGIC_VECTOR (15 downto 0);
+    signal i_2_fu_219_p2 : STD_LOGIC_VECTOR (16 downto 0);
+    signal i_2_reg_369 : STD_LOGIC_VECTOR (16 downto 0);
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
     signal exitcond1_fu_213_p2 : STD_LOGIC_VECTOR (0 downto 0);
@@ -139,7 +139,7 @@ architecture behav of count_occ_v2 is
     signal tmp_14_reg_477 : STD_LOGIC_VECTOR (31 downto 0);
     signal tmp_15_fu_360_p2 : STD_LOGIC_VECTOR (31 downto 0);
     signal tmp_15_reg_482 : STD_LOGIC_VECTOR (31 downto 0);
-    signal i_reg_191 : STD_LOGIC_VECTOR (15 downto 0);
+    signal i_reg_191 : STD_LOGIC_VECTOR (16 downto 0);
     signal ap_CS_fsm_state5 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state5 : signal is "none";
     signal i_1_reg_202 : STD_LOGIC_VECTOR (8 downto 0);
@@ -194,7 +194,7 @@ begin
             if ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
                 i_reg_191 <= i_2_reg_369;
             elsif (((ap_const_logic_1 = ap_CS_fsm_state1) and (ap_start = ap_const_logic_1))) then 
-                i_reg_191 <= ap_const_lv16_0;
+                i_reg_191 <= ap_const_lv17_0;
             end if; 
         end if;
     end process;
@@ -608,9 +608,9 @@ begin
         end if; 
     end process;
 
-    exitcond1_fu_213_p2 <= "1" when (i_reg_191 = ap_const_lv16_FA00) else "0";
+    exitcond1_fu_213_p2 <= "1" when (i_reg_191 = ap_const_lv17_10000) else "0";
     exitcond_fu_308_p2 <= "1" when (i_1_reg_202 = ap_const_lv9_100) else "0";
-    i_2_fu_219_p2 <= std_logic_vector(unsigned(i_reg_191) + unsigned(ap_const_lv16_1));
+    i_2_fu_219_p2 <= std_logic_vector(unsigned(i_reg_191) + unsigned(ap_const_lv17_1));
     i_3_fu_336_p2 <= std_logic_vector(unsigned(i_1_reg_202) + unsigned(ap_const_lv9_1));
     tmp_10_fu_320_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_1_fu_314_p2),64));
     tmp_11_fu_328_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_1_reg_202),64));

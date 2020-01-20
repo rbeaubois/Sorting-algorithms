@@ -18,9 +18,7 @@ do
 	fi
 done
 
-echo "Enter maximum amount of data"
-echo
-read dat_nb
+dat_nb = 65536
 
 cd c
 ./main "$sort" bench "$dat_nb"

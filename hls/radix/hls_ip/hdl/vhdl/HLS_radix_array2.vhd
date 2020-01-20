@@ -15,7 +15,7 @@ entity HLS_radix_array2_ram is
             MEM_TYPE    : string := "block"; 
             DWIDTH     : integer := 32; 
             AWIDTH     : integer := 16; 
-            MEM_SIZE    : integer := 64000
+            MEM_SIZE    : integer := 65536
     ); 
     port (
           addr0     : in std_logic_vector(AWIDTH-1 downto 0); 
@@ -76,7 +76,7 @@ use IEEE.std_logic_1164.all;
 entity HLS_radix_array2 is
     generic (
         DataWidth : INTEGER := 32;
-        AddressRange : INTEGER := 64000;
+        AddressRange : INTEGER := 65536;
         AddressWidth : INTEGER := 16);
     port (
         reset : IN STD_LOGIC;

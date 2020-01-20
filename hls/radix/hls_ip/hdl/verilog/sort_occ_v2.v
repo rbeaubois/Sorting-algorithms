@@ -68,30 +68,28 @@ reg count_we0;
 
 (* fsm_encoding = "none" *) reg   [5:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
-wire   [31:0] shift_cast_fu_82_p1;
-reg   [31:0] shift_cast_reg_141;
-wire   [15:0] i_cast_fu_100_p2;
-reg   [15:0] i_cast_reg_146;
+wire   [31:0] shift_cast_fu_80_p1;
+reg   [31:0] shift_cast_reg_129;
+wire  signed [16:0] i_fu_84_p2;
+reg  signed [16:0] i_reg_134;
 wire    ap_CS_fsm_state2;
-wire   [0:0] tmp_fu_106_p2;
-reg   [31:0] array_src_load_reg_159;
+wire   [0:0] tmp_fu_94_p2;
+reg   [31:0] array_src_load_reg_147;
 wire    ap_CS_fsm_state3;
-wire   [7:0] tmp_3_fu_122_p1;
-reg   [7:0] tmp_3_reg_164;
-reg   [7:0] count_addr_reg_169;
+wire   [7:0] tmp_3_fu_110_p1;
+reg   [7:0] tmp_3_reg_152;
+reg   [7:0] count_addr_reg_157;
 wire    ap_CS_fsm_state4;
-reg   [31:0] count_load_reg_174;
+reg   [31:0] count_load_reg_162;
 wire    ap_CS_fsm_state5;
-reg   [15:0] i_0_in_reg_71;
+reg   [16:0] i_0_in_reg_69;
 wire    ap_CS_fsm_state6;
-wire   [63:0] tmp_1_fu_112_p1;
-wire   [63:0] tmp_4_fu_126_p1;
-wire  signed [63:0] tmp_6_fu_136_p1;
-wire  signed [31:0] tmp_5_fu_130_p2;
-wire   [16:0] i_0_in_cast_fu_86_p1;
-wire   [16:0] i_fu_90_p2;
-wire  signed [31:0] i_cast1_fu_96_p1;
-wire   [31:0] tmp_2_fu_117_p2;
+wire   [63:0] tmp_1_fu_100_p1;
+wire   [63:0] tmp_4_fu_114_p1;
+wire  signed [63:0] tmp_6_fu_124_p1;
+wire  signed [31:0] tmp_5_fu_118_p2;
+wire  signed [31:0] i_cast_fu_90_p1;
+wire   [31:0] tmp_2_fu_105_p2;
 reg   [5:0] ap_NS_fsm;
 
 // power-on initialization
@@ -109,45 +107,45 @@ end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state6)) begin
-        i_0_in_reg_71 <= i_cast_reg_146;
+        i_0_in_reg_69 <= i_reg_134;
     end else if (((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b1))) begin
-        i_0_in_reg_71 <= 16'd64000;
+        i_0_in_reg_69 <= 17'd65536;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state3)) begin
-        array_src_load_reg_159 <= array_src_q0;
-        tmp_3_reg_164 <= tmp_3_fu_122_p1;
+        array_src_load_reg_147 <= array_src_q0;
+        tmp_3_reg_152 <= tmp_3_fu_110_p1;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state4)) begin
-        count_addr_reg_169 <= tmp_4_fu_126_p1;
+        count_addr_reg_157 <= tmp_4_fu_114_p1;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state5)) begin
-        count_load_reg_174 <= count_q0;
+        count_load_reg_162 <= count_q0;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        i_cast_reg_146 <= i_cast_fu_100_p2;
+        i_reg_134 <= i_fu_84_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
     if (((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b1))) begin
-        shift_cast_reg_141[5 : 0] <= shift_cast_fu_82_p1[5 : 0];
+        shift_cast_reg_129[5 : 0] <= shift_cast_fu_80_p1[5 : 0];
     end
 end
 
 always @ (*) begin
-    if ((((tmp_fu_106_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2)) | ((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if ((((tmp_fu_94_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2)) | ((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)))) begin
         ap_done = 1'b1;
     end else begin
         ap_done = 1'b0;
@@ -163,7 +161,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((tmp_fu_106_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((tmp_fu_94_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
         ap_ready = 1'b1;
     end else begin
         ap_ready = 1'b0;
@@ -196,9 +194,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state6)) begin
-        count_address0 = count_addr_reg_169;
+        count_address0 = count_addr_reg_157;
     end else if ((1'b1 == ap_CS_fsm_state4)) begin
-        count_address0 = tmp_4_fu_126_p1;
+        count_address0 = tmp_4_fu_114_p1;
     end else begin
         count_address0 = 'bx;
     end
@@ -230,7 +228,7 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            if (((tmp_fu_106_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+            if (((tmp_fu_94_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
                 ap_NS_fsm = ap_ST_fsm_state1;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state3;
@@ -266,40 +264,36 @@ assign ap_CS_fsm_state5 = ap_CS_fsm[32'd4];
 
 assign ap_CS_fsm_state6 = ap_CS_fsm[32'd5];
 
-assign array_dst_address0 = tmp_6_fu_136_p1;
+assign array_dst_address0 = tmp_6_fu_124_p1;
 
-assign array_dst_d0 = array_src_load_reg_159;
+assign array_dst_d0 = array_src_load_reg_147;
 
-assign array_src_address0 = tmp_1_fu_112_p1;
+assign array_src_address0 = tmp_1_fu_100_p1;
 
-assign count_d0 = tmp_5_fu_130_p2;
+assign count_d0 = tmp_5_fu_118_p2;
 
-assign i_0_in_cast_fu_86_p1 = i_0_in_reg_71;
+assign i_cast_fu_90_p1 = i_fu_84_p2;
 
-assign i_cast1_fu_96_p1 = $signed(i_fu_90_p2);
+assign i_fu_84_p2 = ($signed(i_0_in_reg_69) + $signed(17'd131071));
 
-assign i_cast_fu_100_p2 = ($signed(i_0_in_reg_71) + $signed(16'd65535));
+assign shift_cast_fu_80_p1 = shift;
 
-assign i_fu_90_p2 = ($signed(i_0_in_cast_fu_86_p1) + $signed(17'd131071));
+assign tmp_1_fu_100_p1 = $unsigned(i_cast_fu_90_p1);
 
-assign shift_cast_fu_82_p1 = shift;
+assign tmp_2_fu_105_p2 = array_src_q0 >> shift_cast_reg_129;
 
-assign tmp_1_fu_112_p1 = $unsigned(i_cast1_fu_96_p1);
+assign tmp_3_fu_110_p1 = tmp_2_fu_105_p2[7:0];
 
-assign tmp_2_fu_117_p2 = array_src_q0 >> shift_cast_reg_141;
+assign tmp_4_fu_114_p1 = tmp_3_reg_152;
 
-assign tmp_3_fu_122_p1 = tmp_2_fu_117_p2[7:0];
+assign tmp_5_fu_118_p2 = ($signed(32'd4294967295) + $signed(count_load_reg_162));
 
-assign tmp_4_fu_126_p1 = tmp_3_reg_164;
+assign tmp_6_fu_124_p1 = tmp_5_fu_118_p2;
 
-assign tmp_5_fu_130_p2 = ($signed(32'd4294967295) + $signed(count_load_reg_174));
-
-assign tmp_6_fu_136_p1 = tmp_5_fu_130_p2;
-
-assign tmp_fu_106_p2 = ((i_0_in_reg_71 == 16'd0) ? 1'b1 : 1'b0);
+assign tmp_fu_94_p2 = ((i_0_in_reg_69 == 17'd0) ? 1'b1 : 1'b0);
 
 always @ (posedge ap_clk) begin
-    shift_cast_reg_141[31:6] <= 26'b00000000000000000000000000;
+    shift_cast_reg_129[31:6] <= 26'b00000000000000000000000000;
 end
 
 endmodule //sort_occ_v2

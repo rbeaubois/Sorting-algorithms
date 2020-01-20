@@ -10,7 +10,7 @@ module HLS_radix_array2_ram (addr0, ce0, d0, we0, q0,  clk);
 
 parameter DWIDTH = 32;
 parameter AWIDTH = 16;
-parameter MEM_SIZE = 64000;
+parameter MEM_SIZE = 65536;
 
 input[AWIDTH-1:0] addr0;
 input ce0;
@@ -53,7 +53,7 @@ module HLS_radix_array2(
     q0);
 
 parameter DataWidth = 32'd32;
-parameter AddressRange = 32'd64000;
+parameter AddressRange = 32'd65536;
 parameter AddressWidth = 32'd16;
 input reset;
 input clk;

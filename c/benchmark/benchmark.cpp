@@ -1,7 +1,7 @@
 #include "benchmark.h"
 
 // Benchmarking a sort algorithm
-void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
+void runBenchmark(Comparator *s, unsigned int* data, string sort)
 {
 	string filename;
 	string dir = "../bench_results/";
@@ -14,47 +14,19 @@ void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
     unsigned int tmp = 0 , duration = 0, max = 0, min = UINT32_MAX;
     unsigned long s_dur = 0;
     unsigned int timer = 0;
+    int nb_data = 0;
 
     cerr << "[Run]" << endl;
-    cerr << "\tSize of data sets : 4 to " << n << endl;
-    cerr << "\tStep : " << DATA_STEP << endl;
+    cerr << "\tSize of data sets 2^2 (4) to 2^16 (65536)" << endl;
     cerr << "\tRandom sets benched per step : " << NB_SETS << endl;
     cerr << "\tAveraging per set : " << AVERAGING << endl;
 
-    outfile << '#' << "Data set size:" << n << "\\\\n" << '#' << "Step:" << DATA_STEP << "\\\\n" << '#' << "Random sets benched per step:" << NB_SETS << "\\\\n" << '#' << "Averaging per set:" << AVERAGING << endl;    
-
-    // Multiple runs for a number of data from 4 to DATA_STEP
-    // for (int h = 0; h < NB_SETS; h++)
-    // {
-    //     for (int i = 4; i < n; i+= DATA_STEP)
-    //     {
-    //         s_dur   = 0;
-    //         max     = 0;
-    //         min     = UINT32_MAX;
-    // 
-    //         // Multiple runs for a given number of data
-    //         for (int j = 0; j < AVERAGING; j++)
-    //         {        
-    //             //cout << "Number of elts:" << i << endl;
-    //             tmp     = s->process(data, i);
-    //             max     = (tmp>max)?tmp:max;
-    //             min     = (tmp<min)?tmp:min;
-    //             s_dur   += tmp; 
-    //             //cout << "Duration:" << duration << endl;
-    //             timer++;
-    //         }
-    // 
-    //         duration = s_dur/AVERAGING;
-    //         outfile << i << sep << duration << sep << max << sep << min << "\n" ;
-    //         print_progress(timer, n);
-    //     }        
-    //     randomize(data, n);
-    // }
-
+    outfile << '#' << "Data set size: 2^2 (4) to 2^16 (65536)" << "\\\\n" <<'#' << "Random sets benched per step:" << NB_SETS << "\\\\n" << '#' << "Averaging per set:" << AVERAGING << endl;
 
     //Multiple runs for a number of data from 4 to DATA_STEP
-    for (int i = 4; i < n; i+= DATA_STEP)
+    for (int i = 2; i < (MAX_DATA_POWER+1) ; i++)
     {
+        nb_data = (1<<i);
         s_dur   = 0;
         max     = 0;
         min     = UINT32_MAX;
@@ -64,19 +36,19 @@ void runBenchmark(Comparator *s, unsigned int* data, int n, string sort)
             // Multiple runs for a given number of data
             for (int j = 0; j < AVERAGING; j++)
             {        
-                tmp     = s->process(data, i);
+                tmp     = s->process(data, nb_data);
                 max     = (tmp>max)?tmp:max;
                 min     = (tmp<min)?tmp:min;
                 s_dur   += tmp; 
                 timer++;
             }
 
-            randomize(data, i);
+            randomize(data, nb_data);
         }      
 
         duration = s_dur/(AVERAGING*NB_SETS);
-        outfile << i << sep << duration << sep << max << sep << min << "\n" ;
-        print_progress(timer, n);
+        outfile << nb_data << sep << duration << sep << max << sep << min << "\n" ;
+        print_progress(timer);
     }
 
     outfile.close();
@@ -93,10 +65,10 @@ void randomize(unsigned int* data, int n){
 }
 
 // Print time on terminal
-void print_progress(unsigned int timer, int n){
+void print_progress(unsigned int timer){
     int progress;
     unsigned char barWidth = 40;
-    progress = (barWidth*timer)/(AVERAGING*(n/DATA_STEP)*NB_SETS);
+    progress = (barWidth*timer)/(AVERAGING*(MAX_DATA_POWER-1)*NB_SETS);
 
     cerr << "[";
     for (int i = 0; i < barWidth; i++)
