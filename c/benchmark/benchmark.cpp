@@ -4,7 +4,7 @@
 void runBenchmark(Comparator *s, unsigned int* data, string sort)
 {
 	string filename;
-	string dir = "../bench_results/";
+	string dir = "../benchmarks/";
 	filename = dir + sort + "_results.csv"; 
 
     ofstream outfile;
