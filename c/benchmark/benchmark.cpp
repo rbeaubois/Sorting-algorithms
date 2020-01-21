@@ -4,7 +4,7 @@
 void runBenchmark(Comparator *s, unsigned int* data, string sort)
 {
 	string filename;
-	string dir = "../bench_results/";
+	string dir = "../benchmarks/";
 	filename = dir + sort + "_results.csv"; 
 
     ofstream outfile;
@@ -21,7 +21,7 @@ void runBenchmark(Comparator *s, unsigned int* data, string sort)
     cerr << "\tRandom sets benched per step : " << NB_SETS << endl;
     cerr << "\tAveraging per set : " << AVERAGING << endl;
 
-    outfile << '#' << "Data set size: 2^2 (4) to 2^16 (65536)" << "\\\\n" <<'#' << "Random sets benched per step:" << NB_SETS << "\\\\n" << '#' << "Averaging per set:" << AVERAGING << endl;
+    outfile << '#' << "Data set size: 2^{2} (4) to 2^{16} (65536)" << "\\\\n" <<'#' << "Random sets benched per step:" << NB_SETS << "\\\\n" << '#' << "Averaging per set:" << AVERAGING << endl;
 
     //Multiple runs for a number of data from 4 to DATA_STEP
     for (int i = 2; i < (MAX_DATA_POWER+1) ; i++)
