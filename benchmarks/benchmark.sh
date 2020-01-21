@@ -27,7 +27,7 @@ touch plot.gnu
 cat plt_tmp.txt >> plot.gnu
 sed -i -e "s/image/$sort/g" plot.gnu
 echo -e "set title \"CPU Benchmark results\"" >> plot.gnu
-echo -e "set label \"${info}\" at graph 0.6, graph 0.95" >> plot.gnu
+echo -e "set label \"${info}\" at graph 0.54, graph 0.95" >> plot.gnu
 echo "Choose what to plot:"
 select plot_choice in Min Max All; do
     case $plot_choice in
