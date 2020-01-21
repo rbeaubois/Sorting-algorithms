@@ -18,13 +18,10 @@ do
 	fi
 done
 
-echo "Enter maximum amount of data"
-echo
-read dat_nb
+dat_nb=65536
 
-cd c
-./main "$sort" bench "$dat_nb"
-cd ..
+../c/main "$sort" bench $dat_nb
+
 info="$(awk 'NR==1' ${sort}_results.csv)"
 touch plot.gnu
 cat plt_tmp.txt >> plot.gnu
@@ -48,5 +45,5 @@ select plot_choice in Min Max All; do
 done
 
 echo -e "unset multiplot" >> plot.gnu
-cd benchmarks && gnuplot plot.gnu && feh $sort.png
+gnuplot plot.gnu && feh ../bench_results/$sort.png
 

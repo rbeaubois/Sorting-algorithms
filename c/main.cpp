@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 	if (!strcmp(argv[2], "bench"))
 	{
 		cout << "Start of benchmark" << endl;
-		runBenchmark(s, data, atoi(argv[3]), argv[1]);
+		runBenchmark(s, data, argv[1]);
 		cout << "End of benchmark" << endl;
 	}
 
