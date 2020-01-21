@@ -14,4 +14,12 @@ random.txt
 main
 
 .vscode
+
+# HLS_projects
 hls/check_side_chan_axi/hls_project/
+hls/sorting/hls_sorting/
+
+# Vivado projects
+vivado/pynq/pynq.*
+vivado/pynq/hls_ip
+
