@@ -1,0 +1,348 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'HLS_sort'" level="0">
+<item name = "Date">Tue Jan 21 11:03:26 2020
+</item>
+<item name = "Version">2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)</item>
+<item name = "Project">hls_sorting</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020clg400-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00, 7.674, 1.25</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+<column name="grp_count_occ_v2_fu_366">count_occ_v2, 213438, 213438, 213438, 213438, none</column>
+<column name="grp_sort_occ_v2_fu_375">sort_occ_v2, 327681, 327681, 327681, 327681, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- memset_tab">65535, 65535, 1, -, -, 65536, no</column>
+<column name="- Loop 2">?, ?, 1852879, -, -, inf, no</column>
+<column name=" + Loop 2.1">131072, 131072, 2, -, -, 65536, no</column>
+<column name=" + memset_count_1">255, 255, 1, -, -, 256, no</column>
+<column name=" + memset_count_2">255, 255, 1, -, -, 256, no</column>
+<column name=" + memset_count_3">255, 255, 1, -, -, 256, no</column>
+<column name=" + memset_count_4">255, 255, 1, -, -, 256, no</column>
+<column name=" + Loop 2.6">196608, 196608, 3, -, -, 65536, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="DSP">-, -, -, -</column>
+<column name="Expression">-, -, 0, 400</column>
+<column name="FIFO">-, -, -, -</column>
+<column name="Instance">-, -, 1118, 1860</column>
+<column name="Memory">264, -, 0, 0</column>
+<column name="Multiplexer">-, -, -, 1128</column>
+<column name="Register">-, -, 379, -</column>
+<specialColumn name="Available">280, 220, 106400, 53200</specialColumn>
+<specialColumn name="Utilization (%)">94, 0, 1, 6</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="grp_count_occ_v2_fu_366">count_occ_v2, 0, 0, 992, 1616</column>
+<column name="grp_sort_occ_v2_fu_375">sort_occ_v2, 0, 0, 126, 244</column>
+</table>
+</item>
+<item name = "DSP48"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="array2_U">HLS_sort_array2, 128, 0, 0, 65536, 32, 1, 2097152</column>
+<column name="tab_U">HLS_sort_array2, 128, 0, 0, 65536, 32, 1, 2097152</column>
+<column name="count_1_U">HLS_sort_count_1, 2, 0, 0, 256, 32, 1, 8192</column>
+<column name="count_2_U">HLS_sort_count_1, 2, 0, 0, 256, 32, 1, 8192</column>
+<column name="count_3_U">HLS_sort_count_1, 2, 0, 0, 256, 32, 1, 8192</column>
+<column name="count_4_U">HLS_sort_count_1, 2, 0, 0, 256, 32, 1, 8192</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="7">Name, BRAM_18K, FF, LUT, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="i_2_fu_410_p2">+, 0, 0, 24, 17, 1</column>
+<column name="i_3_fu_545_p2">+, 0, 0, 24, 17, 1</column>
+<column name="indvarinc3_i_fu_488_p2">+, 0, 0, 15, 8, 1</column>
+<column name="indvarinc6_i_fu_505_p2">+, 0, 0, 15, 8, 1</column>
+<column name="indvarinc9_i_fu_522_p2">+, 0, 0, 15, 8, 1</column>
+<column name="indvarinc_fu_387_p2">+, 0, 0, 23, 16, 1</column>
+<column name="indvarinc_i_fu_471_p2">+, 0, 0, 15, 8, 1</column>
+<column name="M_AXIS_V_data_V_1_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_data_V_1_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_dest_V_1_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_dest_V_1_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_id_V_1_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_id_V_1_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_keep_V_1_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_keep_V_1_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_last_V_1_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_last_V_1_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_strb_V_1_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_strb_V_1_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_user_V_1_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_user_V_1_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_data_V_0_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_data_V_0_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_dest_V_0_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_dest_V_0_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_id_V_0_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_id_V_0_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_keep_V_0_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_keep_V_0_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_strb_V_0_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_strb_V_0_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_user_V_0_load_A">and, 0, 0, 2, 1, 1</column>
+<column name="S_AXIS_V_user_V_0_load_B">and, 0, 0, 2, 1, 1</column>
+<column name="M_AXIS_V_data_V_1_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="M_AXIS_V_dest_V_1_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="M_AXIS_V_id_V_1_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="M_AXIS_V_keep_V_1_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="M_AXIS_V_last_V_1_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="M_AXIS_V_strb_V_1_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="M_AXIS_V_user_V_1_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="S_AXIS_V_data_V_0_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="S_AXIS_V_dest_V_0_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="S_AXIS_V_id_V_0_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="S_AXIS_V_keep_V_0_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="S_AXIS_V_strb_V_0_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="S_AXIS_V_user_V_0_state_cmp_full">icmp, 0, 0, 8, 2, 1</column>
+<column name="exitcond1_fu_404_p2">icmp, 0, 0, 18, 17, 18</column>
+<column name="exitcond_fu_539_p2">icmp, 0, 0, 18, 17, 18</column>
+<column name="tmp_2_i_fu_499_p2">icmp, 0, 0, 11, 8, 2</column>
+<column name="tmp_4_fu_556_p2">icmp, 0, 0, 18, 17, 16</column>
+<column name="tmp_4_i_fu_516_p2">icmp, 0, 0, 11, 8, 2</column>
+<column name="tmp_6_i_fu_533_p2">icmp, 0, 0, 11, 8, 2</column>
+<column name="tmp_i_16_fu_482_p2">icmp, 0, 0, 11, 8, 2</column>
+<column name="tmp_s_fu_398_p2">icmp, 0, 0, 13, 16, 2</column>
+<column name="tmp_last_V_fu_562_p2">or, 0, 0, 2, 1, 1</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="M_AXIS_TDATA_blk_n">9, 2, 1, 2</column>
+<column name="M_AXIS_V_data_V_1_data_out">9, 2, 32, 64</column>
+<column name="M_AXIS_V_data_V_1_state">15, 3, 2, 6</column>
+<column name="M_AXIS_V_dest_V_1_data_out">9, 2, 1, 2</column>
+<column name="M_AXIS_V_dest_V_1_state">15, 3, 2, 6</column>
+<column name="M_AXIS_V_id_V_1_data_out">9, 2, 1, 2</column>
+<column name="M_AXIS_V_id_V_1_state">15, 3, 2, 6</column>
+<column name="M_AXIS_V_keep_V_1_data_out">9, 2, 4, 8</column>
+<column name="M_AXIS_V_keep_V_1_state">15, 3, 2, 6</column>
+<column name="M_AXIS_V_last_V_1_data_out">9, 2, 1, 2</column>
+<column name="M_AXIS_V_last_V_1_state">15, 3, 2, 6</column>
+<column name="M_AXIS_V_strb_V_1_data_out">9, 2, 4, 8</column>
+<column name="M_AXIS_V_strb_V_1_state">15, 3, 2, 6</column>
+<column name="M_AXIS_V_user_V_1_data_out">9, 2, 1, 2</column>
+<column name="M_AXIS_V_user_V_1_state">15, 3, 2, 6</column>
+<column name="S_AXIS_TDATA_blk_n">9, 2, 1, 2</column>
+<column name="S_AXIS_V_data_V_0_data_out">9, 2, 32, 64</column>
+<column name="S_AXIS_V_data_V_0_state">15, 3, 2, 6</column>
+<column name="S_AXIS_V_dest_V_0_data_out">9, 2, 1, 2</column>
+<column name="S_AXIS_V_dest_V_0_state">15, 3, 2, 6</column>
+<column name="S_AXIS_V_id_V_0_data_out">9, 2, 1, 2</column>
+<column name="S_AXIS_V_id_V_0_state">15, 3, 2, 6</column>
+<column name="S_AXIS_V_keep_V_0_data_out">9, 2, 4, 8</column>
+<column name="S_AXIS_V_keep_V_0_state">15, 3, 2, 6</column>
+<column name="S_AXIS_V_strb_V_0_data_out">9, 2, 4, 8</column>
+<column name="S_AXIS_V_strb_V_0_state">15, 3, 2, 6</column>
+<column name="S_AXIS_V_user_V_0_data_out">9, 2, 1, 2</column>
+<column name="S_AXIS_V_user_V_0_state">15, 3, 2, 6</column>
+<column name="ap_NS_fsm">109, 23, 1, 23</column>
+<column name="array2_address0">15, 3, 16, 48</column>
+<column name="array2_ce0">15, 3, 1, 3</column>
+<column name="array2_we0">9, 2, 1, 2</column>
+<column name="count_1_address0">21, 4, 8, 32</column>
+<column name="count_1_ce0">21, 4, 1, 4</column>
+<column name="count_1_ce1">9, 2, 1, 2</column>
+<column name="count_1_d0">21, 4, 32, 128</column>
+<column name="count_1_we0">21, 4, 1, 4</column>
+<column name="count_1_we1">9, 2, 1, 2</column>
+<column name="count_2_address0">21, 4, 8, 32</column>
+<column name="count_2_ce0">21, 4, 1, 4</column>
+<column name="count_2_ce1">9, 2, 1, 2</column>
+<column name="count_2_d0">21, 4, 32, 128</column>
+<column name="count_2_we0">21, 4, 1, 4</column>
+<column name="count_2_we1">9, 2, 1, 2</column>
+<column name="count_3_address0">21, 4, 8, 32</column>
+<column name="count_3_ce0">21, 4, 1, 4</column>
+<column name="count_3_ce1">9, 2, 1, 2</column>
+<column name="count_3_d0">21, 4, 32, 128</column>
+<column name="count_3_we0">21, 4, 1, 4</column>
+<column name="count_3_we1">9, 2, 1, 2</column>
+<column name="count_4_address0">21, 4, 8, 32</column>
+<column name="count_4_ce0">21, 4, 1, 4</column>
+<column name="count_4_ce1">9, 2, 1, 2</column>
+<column name="count_4_d0">21, 4, 32, 128</column>
+<column name="count_4_we0">21, 4, 1, 4</column>
+<column name="count_4_we1">9, 2, 1, 2</column>
+<column name="grp_sort_occ_v2_fu_375_array_src_q0">15, 3, 32, 96</column>
+<column name="grp_sort_occ_v2_fu_375_count_q0">27, 5, 32, 160</column>
+<column name="grp_sort_occ_v2_fu_375_shift">27, 5, 6, 30</column>
+<column name="i_1_reg_355">9, 2, 17, 34</column>
+<column name="i_reg_288">9, 2, 17, 34</column>
+<column name="invdar2_i_reg_311">9, 2, 8, 16</column>
+<column name="invdar5_i_reg_322">9, 2, 8, 16</column>
+<column name="invdar8_i_reg_333">9, 2, 8, 16</column>
+<column name="invdar_i_reg_300">9, 2, 8, 16</column>
+<column name="invdar_reg_277">9, 2, 16, 32</column>
+<column name="tab_address0">38, 7, 16, 112</column>
+<column name="tab_ce0">27, 5, 1, 5</column>
+<column name="tab_d0">21, 4, 32, 128</column>
+<column name="tab_we0">15, 3, 1, 3</column>
+<column name="val_4_reg_344">9, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="M_AXIS_V_data_V_1_payload_A">32, 0, 32, 0</column>
+<column name="M_AXIS_V_data_V_1_payload_B">32, 0, 32, 0</column>
+<column name="M_AXIS_V_data_V_1_sel_rd">1, 0, 1, 0</column>
+<column name="M_AXIS_V_data_V_1_sel_wr">1, 0, 1, 0</column>
+<column name="M_AXIS_V_data_V_1_state">2, 0, 2, 0</column>
+<column name="M_AXIS_V_dest_V_1_payload_A">1, 0, 1, 0</column>
+<column name="M_AXIS_V_dest_V_1_payload_B">1, 0, 1, 0</column>
+<column name="M_AXIS_V_dest_V_1_sel_rd">1, 0, 1, 0</column>
+<column name="M_AXIS_V_dest_V_1_sel_wr">1, 0, 1, 0</column>
+<column name="M_AXIS_V_dest_V_1_state">2, 0, 2, 0</column>
+<column name="M_AXIS_V_id_V_1_payload_A">1, 0, 1, 0</column>
+<column name="M_AXIS_V_id_V_1_payload_B">1, 0, 1, 0</column>
+<column name="M_AXIS_V_id_V_1_sel_rd">1, 0, 1, 0</column>
+<column name="M_AXIS_V_id_V_1_sel_wr">1, 0, 1, 0</column>
+<column name="M_AXIS_V_id_V_1_state">2, 0, 2, 0</column>
+<column name="M_AXIS_V_keep_V_1_payload_A">4, 0, 4, 0</column>
+<column name="M_AXIS_V_keep_V_1_payload_B">4, 0, 4, 0</column>
+<column name="M_AXIS_V_keep_V_1_sel_rd">1, 0, 1, 0</column>
+<column name="M_AXIS_V_keep_V_1_sel_wr">1, 0, 1, 0</column>
+<column name="M_AXIS_V_keep_V_1_state">2, 0, 2, 0</column>
+<column name="M_AXIS_V_last_V_1_payload_A">1, 0, 1, 0</column>
+<column name="M_AXIS_V_last_V_1_payload_B">1, 0, 1, 0</column>
+<column name="M_AXIS_V_last_V_1_sel_rd">1, 0, 1, 0</column>
+<column name="M_AXIS_V_last_V_1_sel_wr">1, 0, 1, 0</column>
+<column name="M_AXIS_V_last_V_1_state">2, 0, 2, 0</column>
+<column name="M_AXIS_V_strb_V_1_payload_A">4, 0, 4, 0</column>
+<column name="M_AXIS_V_strb_V_1_payload_B">4, 0, 4, 0</column>
+<column name="M_AXIS_V_strb_V_1_sel_rd">1, 0, 1, 0</column>
+<column name="M_AXIS_V_strb_V_1_sel_wr">1, 0, 1, 0</column>
+<column name="M_AXIS_V_strb_V_1_state">2, 0, 2, 0</column>
+<column name="M_AXIS_V_user_V_1_payload_A">1, 0, 1, 0</column>
+<column name="M_AXIS_V_user_V_1_payload_B">1, 0, 1, 0</column>
+<column name="M_AXIS_V_user_V_1_sel_rd">1, 0, 1, 0</column>
+<column name="M_AXIS_V_user_V_1_sel_wr">1, 0, 1, 0</column>
+<column name="M_AXIS_V_user_V_1_state">2, 0, 2, 0</column>
+<column name="S_AXIS_V_data_V_0_payload_A">32, 0, 32, 0</column>
+<column name="S_AXIS_V_data_V_0_payload_B">32, 0, 32, 0</column>
+<column name="S_AXIS_V_data_V_0_sel_rd">1, 0, 1, 0</column>
+<column name="S_AXIS_V_data_V_0_sel_wr">1, 0, 1, 0</column>
+<column name="S_AXIS_V_data_V_0_state">2, 0, 2, 0</column>
+<column name="S_AXIS_V_dest_V_0_payload_A">1, 0, 1, 0</column>
+<column name="S_AXIS_V_dest_V_0_payload_B">1, 0, 1, 0</column>
+<column name="S_AXIS_V_dest_V_0_sel_rd">1, 0, 1, 0</column>
+<column name="S_AXIS_V_dest_V_0_sel_wr">1, 0, 1, 0</column>
+<column name="S_AXIS_V_dest_V_0_state">2, 0, 2, 0</column>
+<column name="S_AXIS_V_id_V_0_payload_A">1, 0, 1, 0</column>
+<column name="S_AXIS_V_id_V_0_payload_B">1, 0, 1, 0</column>
+<column name="S_AXIS_V_id_V_0_sel_rd">1, 0, 1, 0</column>
+<column name="S_AXIS_V_id_V_0_sel_wr">1, 0, 1, 0</column>
+<column name="S_AXIS_V_id_V_0_state">2, 0, 2, 0</column>
+<column name="S_AXIS_V_keep_V_0_payload_A">4, 0, 4, 0</column>
+<column name="S_AXIS_V_keep_V_0_payload_B">4, 0, 4, 0</column>
+<column name="S_AXIS_V_keep_V_0_sel_rd">1, 0, 1, 0</column>
+<column name="S_AXIS_V_keep_V_0_sel_wr">1, 0, 1, 0</column>
+<column name="S_AXIS_V_keep_V_0_state">2, 0, 2, 0</column>
+<column name="S_AXIS_V_strb_V_0_payload_A">4, 0, 4, 0</column>
+<column name="S_AXIS_V_strb_V_0_payload_B">4, 0, 4, 0</column>
+<column name="S_AXIS_V_strb_V_0_sel_rd">1, 0, 1, 0</column>
+<column name="S_AXIS_V_strb_V_0_sel_wr">1, 0, 1, 0</column>
+<column name="S_AXIS_V_strb_V_0_state">2, 0, 2, 0</column>
+<column name="S_AXIS_V_user_V_0_payload_A">1, 0, 1, 0</column>
+<column name="S_AXIS_V_user_V_0_payload_B">1, 0, 1, 0</column>
+<column name="S_AXIS_V_user_V_0_sel_rd">1, 0, 1, 0</column>
+<column name="S_AXIS_V_user_V_0_sel_wr">1, 0, 1, 0</column>
+<column name="S_AXIS_V_user_V_0_state">2, 0, 2, 0</column>
+<column name="ap_CS_fsm">22, 0, 22, 0</column>
+<column name="grp_count_occ_v2_fu_366_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_sort_occ_v2_fu_375_ap_start_reg">1, 0, 1, 0</column>
+<column name="i_1_reg_355">17, 0, 17, 0</column>
+<column name="i_2_reg_629">17, 0, 17, 0</column>
+<column name="i_3_reg_669">17, 0, 17, 0</column>
+<column name="i_reg_288">17, 0, 17, 0</column>
+<column name="invdar2_i_reg_311">8, 0, 8, 0</column>
+<column name="invdar5_i_reg_322">8, 0, 8, 0</column>
+<column name="invdar8_i_reg_333">8, 0, 8, 0</column>
+<column name="invdar_i_reg_300">8, 0, 8, 0</column>
+<column name="invdar_reg_277">16, 0, 16, 0</column>
+<column name="tmp_dest_V_fu_150">1, 0, 1, 0</column>
+<column name="tmp_id_V_fu_146">1, 0, 1, 0</column>
+<column name="tmp_keep_V_fu_134">4, 0, 4, 0</column>
+<column name="tmp_last_V_reg_679">1, 0, 1, 0</column>
+<column name="tmp_strb_V_fu_138">4, 0, 4, 0</column>
+<column name="tmp_user_V_fu_142">1, 0, 1, 0</column>
+<column name="val_4_reg_344">1, 0, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_none, HLS_sort, return value</column>
+<column name="ap_rst_n">in, 1, ap_ctrl_none, HLS_sort, return value</column>
+<column name="S_AXIS_TDATA">in, 32, axis, S_AXIS_V_data_V, pointer</column>
+<column name="S_AXIS_TVALID">in, 1, axis, S_AXIS_V_dest_V, pointer</column>
+<column name="S_AXIS_TREADY">out, 1, axis, S_AXIS_V_dest_V, pointer</column>
+<column name="S_AXIS_TDEST">in, 1, axis, S_AXIS_V_dest_V, pointer</column>
+<column name="S_AXIS_TKEEP">in, 4, axis, S_AXIS_V_keep_V, pointer</column>
+<column name="S_AXIS_TSTRB">in, 4, axis, S_AXIS_V_strb_V, pointer</column>
+<column name="S_AXIS_TUSER">in, 1, axis, S_AXIS_V_user_V, pointer</column>
+<column name="S_AXIS_TLAST">in, 1, axis, S_AXIS_V_last_V, pointer</column>
+<column name="S_AXIS_TID">in, 1, axis, S_AXIS_V_id_V, pointer</column>
+<column name="M_AXIS_TDATA">out, 32, axis, M_AXIS_V_data_V, pointer</column>
+<column name="M_AXIS_TVALID">out, 1, axis, M_AXIS_V_dest_V, pointer</column>
+<column name="M_AXIS_TREADY">in, 1, axis, M_AXIS_V_dest_V, pointer</column>
+<column name="M_AXIS_TDEST">out, 1, axis, M_AXIS_V_dest_V, pointer</column>
+<column name="M_AXIS_TKEEP">out, 4, axis, M_AXIS_V_keep_V, pointer</column>
+<column name="M_AXIS_TSTRB">out, 4, axis, M_AXIS_V_strb_V, pointer</column>
+<column name="M_AXIS_TUSER">out, 1, axis, M_AXIS_V_user_V, pointer</column>
+<column name="M_AXIS_TLAST">out, 1, axis, M_AXIS_V_last_V, pointer</column>
+<column name="M_AXIS_TID">out, 1, axis, M_AXIS_V_id_V, pointer</column>
+</table>
+</item>
+</section>
+</profile>

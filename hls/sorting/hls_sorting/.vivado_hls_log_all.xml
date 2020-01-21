@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [XFORM 203-561] 'Loop-2' (hls_src/main.cpp:32:8) in function 'HLS_sort' is an infinite loop." projectName="hls_sorting" solutionName="solution1" date="2020-01-21T11:03:24.988+0100" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop lower bound from 64 to 63 for loop 'Loop-1' in function 'count_occ_v2'." projectName="hls_sorting" solutionName="solution1" date="2020-01-21T11:03:24.652+0100" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop upper bound from 64 to 63 for loop 'Loop-1' in function 'count_occ_v2'." projectName="hls_sorting" solutionName="solution1" date="2020-01-21T11:03:24.605+0100" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

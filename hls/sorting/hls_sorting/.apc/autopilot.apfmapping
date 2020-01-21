@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="radix.h" path="/home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/sorting/hls_src/radix/radix.h"/>
+    <originFiles name="radix.cpp" path="/home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/sorting/hls_src/radix/radix.cpp"/>
+    <originFiles name="main.cpp" path="/home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/sorting/hls_src/main.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="main.cpp" path="/home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/sorting/hls_src/main.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

@@ -14,7 +14,9 @@ random.txt
 main
 
 .vscode
-hls/radix/radix_sort/
-vivado/radix/
-hls/radix/hls_radix/
+
+
+
+hls/sorting/hls_sorting
 hls/check_side_chan_axi/hls_project/
+hls/vivado/pynq/pynq.*
