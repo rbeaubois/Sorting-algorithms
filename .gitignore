@@ -19,4 +19,4 @@ main
 
 hls/sorting/hls_sorting
 hls/check_side_chan_axi/hls_project/
-hls/vivado/pynq/pynq.*
+vivado/pynq/pynq.*
