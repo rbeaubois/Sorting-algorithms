@@ -88,7 +88,7 @@ int main() {
 		xil_printf("%.2d\t\t%.3x\t\t%.3x\r\n", i, TX[i], RX[i]);
 	}
 	*/
-	for (int i = 0; i < NB_DATA; i++) {
+	for (int i = 1; i < NB_DATA; i++) {
 		if (RX[i] < RX[i-1] || RX[i] != i) {
 			e++;
 			xil_printf("%.2d\t\t%.3x\t\t%.3x\r\n", i, RX[i], RX[i-1]);
