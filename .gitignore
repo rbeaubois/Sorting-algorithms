@@ -22,4 +22,5 @@ hls/sorting/hls_sorting/
 # Vivado projects
 vivado/pynq/pynq.*
 vivado/pynq/hls_ip
+vivado/HLS_IP_CATALOG/
 
