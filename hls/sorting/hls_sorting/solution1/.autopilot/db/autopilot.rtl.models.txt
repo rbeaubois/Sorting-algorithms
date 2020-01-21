@@ -1,5 +1,0 @@
-HLS_sort_array2
-HLS_sort_count_1
-count_occ_v2
-sort_occ_v2
-HLS_sort

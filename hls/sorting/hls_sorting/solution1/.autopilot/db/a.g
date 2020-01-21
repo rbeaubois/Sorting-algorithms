@@ -1,4 +1,0 @@
-#!/bin/sh
-lli=${LLVMINTERP-lli}
-exec $lli \
-    /home/rbeaubois/Documents/ENSEIRB/Sorting-algorithms/hls/sorting/hls_sorting/solution1/.autopilot/db/a.g.bc ${1+"$@"}

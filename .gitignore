@@ -14,9 +14,11 @@ random.txt
 main
 
 .vscode
-
-
-
-hls/sorting/hls_sorting
+hls/radix/radix_sort/
+vivado/radix/
+hls/radix/hls_radix/
 hls/check_side_chan_axi/hls_project/
+<<<<<<< HEAD
 vivado/pynq/pynq.*
+=======
+>>>>>>> parent of 75a15b6... update gitignore
