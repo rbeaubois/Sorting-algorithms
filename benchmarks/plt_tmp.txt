@@ -1,6 +1,6 @@
 set datafile separator ";"
 set term png size 1920,1080 font 'Arial,16'
-set output '../bench_results/image.png'
+set output 'image.png'
 set xlabel 'Number of elements'
 set ylabel 'Execution time (us)'
 set grid
