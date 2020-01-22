@@ -89,7 +89,7 @@ int main() {
 	}
 	*/
 	for (int i = 1; i < NB_DATA; i++) {
-		if (RX[i] < RX[i-1] || RX[i] != i) {
+		if (RX[i] < RX[i-1]) {
 			e++;
 			xil_printf("%.2d\t\t%.3x\t\t%.3x\r\n", i, RX[i], RX[i-1]);
 		}

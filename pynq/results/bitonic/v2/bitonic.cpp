@@ -15,28 +15,18 @@ inline void swapcmp(unsigned int* a, unsigned int* b) {
 inline void bitonic_sort(unsigned int* data) {
 	int i;
 	for (i = 0; i < STEP; i++) {
-#pragma HLS DEPENDENCE variable=data inter true
 		unsigned int si = 1 << i;
 		unsigned int gs = si << 1;
 		for (unsigned int k = 0; k < SIZE; k += gs) {
-#pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=8
 			for (unsigned int l = 0; l < si; l++) {
-#pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=16
 				swapcmp(&data[k+l], &data[k-l+gs-1]);
 			}
 		}
 		for (unsigned int j = 1; j <= i; j++) {
-#pragma HLS DEPENDENCE variable=data inter true
 			gs >>= 1;
 			si >>= 1;
 			for (unsigned int k = 0; k < SIZE; k += gs) {
-#pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=8
 				for (unsigned int l = 0; l < si; l++) {
-#pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=16
 					swapcmp(&data[k+l], &data[k+l+si]);
 				}
 			}
