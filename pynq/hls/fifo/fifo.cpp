@@ -1,3 +1,6 @@
+#ifndef FIFO_CPP
+#define FIFO_CPP
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -53,4 +56,6 @@ int main_fifo() {
 
 	return 0;
 }
+
+#endif
 

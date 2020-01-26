@@ -1,3 +1,6 @@
+#ifndef BITONIC_HPP
+#define BITONIC_HPP
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,3 +16,5 @@ typedef hls::stream<AXI_VALUE> AXI_STREAM;
 inline void bitonic_sort(unsigned int* data);
 void HLS_bitonic(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS);
 int main_bitonic();
+
+#endif
