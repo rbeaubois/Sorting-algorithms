@@ -13,7 +13,7 @@ Trident::~Trident() {
 }
 
 unsigned int* Trident::sort(unsigned int data[], int len) {
-	bitonicsort(data, 16);
+	bitonicsort(data, len);
 	return data;
 }
 

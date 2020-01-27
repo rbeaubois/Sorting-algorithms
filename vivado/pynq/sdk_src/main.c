@@ -3,8 +3,9 @@
 #include "xaxidma.h"
 #include "sleep.h"
 #include "xtime_l.h"
+#include <time.h>
 
-//#include "platform.h"
+#include "platform.h"
 #include "axilib/axilib.h"
 
 //
@@ -21,6 +22,8 @@ int main() {
 	xil_printf("\r\nRun at: %s %s\r\n", __DATE__, __TIME__);
 	xil_printf("--- Entering main() --- \r\n");
 	xil_printf("NB_DATA: %d\r\n", NB_DATA);
+
+    srand(time(NULL));
 
 	int Status;
 	XAxiDma_Config *Config;
@@ -58,9 +61,12 @@ int main() {
 		return XST_FAILURE;
 	}
 
-	for (int i = 0; i < NB_DATA; i++) {
-		TX[i] = NB_DATA - i;
-	}
+
+    for(int i = 0; i < NB_DATA; i++) {
+        TX[i] = (rand()&0xFF) | (rand()&0xFF)<<8 |
+        (rand()&0xFF)<<16 | (rand()&0xFF)<<24;
+    }
+
 
 	XTime tstart, tend;
 	XTime_GetTime(&tstart);

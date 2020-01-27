@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 // Data size
-#define NB_DATA			65536
+#define NB_DATA			256 //65536
 
 // Type of data
 #define U_INT           32

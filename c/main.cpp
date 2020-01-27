@@ -19,7 +19,7 @@ using namespace std;
 #include "radix/radix.h"
 #include "splitter/splitter.h"
 
-#define NB_THREADS 4
+#define NB_THREADS 8
 #define NB_DATA (1<<16)
 #define NBR_MED 10
 
