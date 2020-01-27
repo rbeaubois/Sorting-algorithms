@@ -24,7 +24,7 @@ using namespace std;
 #define NBR_MED 10
 
 // Data splitter tests
-	void foo(unsigned int* data);
+void foo(unsigned int* data);
 
 int main(int argc, char* argv[]) {
 
@@ -53,6 +53,7 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
+
 	if (!strcmp(argv[1], "bubble")) {
 		s = new Bubble();
 	} else if (!strcmp(argv[1], "insertion")) {
@@ -75,8 +76,7 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
-	if (!strcmp(argv[2], "bench"))
-	{
+	if (argc == 3 && !strcmp(argv[2], "bench")) {
 		cout << "Start of benchmark" << endl;
 		runBenchmark(s, data, argv[1]);
 		cout << "End of benchmark" << endl;
@@ -106,8 +106,11 @@ void foo(unsigned int* data) {
 
     Quick q = Quick();
     for(int i = 0; i < NBR_MED+1; i++) {
-        //cout << "Sort: " << (i==0?0:0+imedians[i-1]) << " " << (i==NBR_MED?NB_DATA:imedians[i]) << endl;
-        cout << "Sort time: " << q.process(i==0?data:data+imedians[i-1]+1, (i==NBR_MED?NB_DATA:imedians[i])-(i==0?0:imedians[i-1]+1)) << endl;
+        //cout << "Sort: " << (i==0?0:0+imedians[i-1]) << " "
+		//	<< (i==NBR_MED?NB_DATA:imedians[i]) << endl;
+        cout << "Sort time: " << q.process(i==0?data:data+imedians[i-1]+1,
+					(i==NBR_MED?NB_DATA:imedians[i])-(i==0?0:imedians[i-1]+1))
+			<< endl;
     }
 
     q.check(data, NB_DATA);

@@ -1,3 +1,6 @@
+#ifndef FIFO_HPP
+#define FIFO_HPP
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -11,3 +14,5 @@ typedef hls::stream<AXI_VALUE> AXI_STREAM;
 
 void HLS_fifo(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS);
 int main_fifo();
+
+#endif

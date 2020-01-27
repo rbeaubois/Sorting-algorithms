@@ -45,5 +45,5 @@ select plot_choice in Min Max All; do
 done
 
 echo -e "unset multiplot" >> plot.gnu
-gnuplot plot.gnu && feh ../bench_results/$sort.png
+gnuplot plot.gnu && feh $sort.png
 

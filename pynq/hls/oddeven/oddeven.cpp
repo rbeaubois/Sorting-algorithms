@@ -1,5 +1,5 @@
-#ifndef BITONIC_CPP
-#define BITONIC_CPP
+#ifndef ODDEVEN_CPP
+#define ODDEVEN_CPP
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,7 +7,7 @@
 #include <ap_axi_sdata.h>
 #include <hls_stream.h>
 
-#include "bitonic.hpp"
+#include "oddeven.hpp"
 
 inline void swapcmp(unsigned int* a, unsigned int* b) {
 	if (*a > *b) {
@@ -17,45 +17,21 @@ inline void swapcmp(unsigned int* a, unsigned int* b) {
 	}
 }
 
-inline void bitonic_sort(unsigned int* data) {
-	int i;
-	for (i = 0; i < STEP; i++) { // Etapes successives du tri
+inline void oddeven_sort(unsigned int* data) {
+	unsigned int i;
+	unsigned int j;
+	for (i = 0; i < SIZE; i++) {
 #pragma HLS DEPENDENCE variable=data inter true
-		unsigned int si = 1 << i;
-		unsigned int gs = si << 1;
-// Sous etape 1, dont l'ordre de comparaison est different des autres
-// Boucle sur tous les sous groupe de la sous etape 1
-	for (unsigned int k = 0; k < SIZE; k += gs) {
+		unsigned int parity = i%2;
+		for (j = parity; j < SIZE-1; j+=2) {
 #pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=8
-// Boucle sur tous les elements du sous groupe
-			for (unsigned int l = 0; l < si; l++) {
-#pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=16
-				swapcmp(&data[k+l], &data[k-l+gs-1]);
-			}
-		}
-// Boucle sur toutes les sous etapes
-		for (unsigned int j = 1; j <= i; j++) {
-#pragma HLS DEPENDENCE variable=data inter true
-			gs >>= 1;
-			si >>= 1;
-// Boucle sur tous les sous groupe de la sous etape j
-			for (unsigned int k = 0; k < SIZE; k += gs) {
-#pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=8
-// Boucle sur tous les elements du sous groupe
-				for (unsigned int l = 0; l < si; l++) {
-#pragma HLS DEPENDENCE variable=data inter false
-#pragma HLS UNROLL factor=16
-					swapcmp(&data[k+l], &data[k+l+si]);
-				}
-			}
+#pragma HLS UNROLL factor=384
+			swapcmp(&data[j], &data[j+1]);
 		}
 	}
 }
 
-void HLS_bitonic(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS) {
+void HLS_oddeven(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS) {
 #pragma HLS INTERFACE ap_ctrl_none port=return
 #pragma HLS INTERFACE axis port=S_AXIS
 #pragma HLS INTERFACE axis port=M_AXIS
@@ -72,7 +48,7 @@ void HLS_bitonic(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS) {
 	val.last = 0;
 
 	// Sort data
-	bitonic_sort(data);
+	oddeven_sort(data);
 
 	// Write back
 	for (i = 0; i < SIZE; i++) {
@@ -84,7 +60,7 @@ void HLS_bitonic(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS) {
 	return;
 }
 
-int main_bitonic() {
+int main_oddeven() {
 	int i;
 	AXI_STREAM AXIS_S2MM;
 	AXI_STREAM AXIS_MM2S;
@@ -101,7 +77,7 @@ int main_bitonic() {
 		AXIS_MM2S.write(val);
 	}
 
-	HLS_bitonic(&AXIS_MM2S, &AXIS_S2MM);
+	HLS_oddeven(&AXIS_MM2S, &AXIS_S2MM);
 
 	for (i = 0; i < SIZE; i++) {
 		AXI_VALUE val = AXIS_S2MM.read();
@@ -129,3 +105,4 @@ int main_bitonic() {
 }
 
 #endif
+
