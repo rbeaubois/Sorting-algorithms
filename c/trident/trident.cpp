@@ -21,6 +21,8 @@ void qs_divide(unsigned int data[], int len) {
 	
 }
 
+// si = swap offset
+// gs = sub group size
 void bitonicsort(unsigned int* const data, unsigned int const step) {
 	unsigned int const tsize = (1<<step);
 	for (unsigned int i = 0; i < step; i++) {
