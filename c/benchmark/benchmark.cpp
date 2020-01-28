@@ -36,7 +36,7 @@ void runBenchmark(Comparator *s, unsigned int* data, string sort)
             // Multiple runs for a given number of data
             for (int j = 0; j < AVERAGING; j++)
             {        
-                tmp     = s->process(data, i); //nb_data);
+                tmp     = s->process(data, nb_data);
                 max     = (tmp>max)?tmp:max;
                 min     = (tmp<min)?tmp:min;
                 s_dur   += tmp; 

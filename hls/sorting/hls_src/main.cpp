@@ -2,7 +2,8 @@
 #include <stdlib.h>
 //#include "radix/radix.h"
 //#include "bitonic/bitonic.hpp"
-#include "tim/tim.h"
+//#include "tim/tim.h"
+#include "bubble/bubble.h"
 
 #include <ap_axi_sdata.h>
 #include <hls_stream.h>
@@ -18,7 +19,7 @@
 	typedef hls::stream<AXI_VALUE> AXI_STREAM;
 
 // Number of data
-	#define NB_BENCHED_DATA	NB_DATA //update
+	#define NB_BENCHED_DATA	 65536	//NB_DATA //update
 
 
 void HLS_sort(AXI_STREAM& S_AXIS, AXI_STREAM& M_AXIS) {
@@ -27,18 +28,21 @@ void HLS_sort(AXI_STREAM& S_AXIS, AXI_STREAM& M_AXIS) {
 #pragma HLS INTERFACE axis port=M_AXIS
 
 	unsigned int tab[NB_BENCHED_DATA] = {0};
+#pragma HLS ARRAY_PARTITION variable=tab cyclic factor=100 dim=1
+
 	int i;
 	AXI_VALUE val;
 
-	while(1){
+	//while(1){
 		for (i = 0; i < NB_BENCHED_DATA; i++)
 		{
 			val = S_AXIS.read();
 			tab[i] = val.data;
 		}
 
-		radix_sort_v2(tab, NB_BENCHED_DATA);
+		//radix_sort_v2(tab, NB_BENCHED_DATA);
 		//bitonic_sort(tab);
+		bubble_sort(tab, NB_BENCHED_DATA);
 		val.last = 0;
 
 		for (i = 0; i < NB_BENCHED_DATA; i++)
@@ -50,7 +54,7 @@ void HLS_sort(AXI_STREAM& S_AXIS, AXI_STREAM& M_AXIS) {
 
 			M_AXIS.write(val);
 		}
-	}
+	//}
 
 	return;
 }

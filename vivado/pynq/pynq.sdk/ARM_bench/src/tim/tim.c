@@ -1,6 +1,6 @@
 #include "tim.h"
-#include <bits/stdc++.h>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 const int RUN = 32;
 
 // this function sorts array from left index to
@@ -25,8 +25,10 @@ void merge(unsigned int arr[], int l, int m, int r)
 {
     // original array is broken in two parts
     // left and right array
-    int len1 = m - l + 1, len2 = r - m;
-    unsigned int left[len1], right[len2];
+    int len1 = m - l + 1;
+    int len2 = r - m;
+    unsigned int* left 	= (unsigned int*)malloc(sizeof(unsigned int)*len1);
+	unsigned int* right	= (unsigned int*)malloc(sizeof(unsigned int)*len2);
     for (int i = 0; i < len1; i++)
         left[i] = arr[l + i];
     for (int i = 0; i < len2; i++)
@@ -68,15 +70,20 @@ void merge(unsigned int arr[], int l, int m, int r)
         k++;
         j++;
     }
+
+    free(left);
+    free(right);
 }
 
 // iterative Timsort function to sort the
 // array[0...n-1] (similar to merge sort)
-unsigned int* tim_sort(unsigned int data[], int len)
+void tim_sort(unsigned int data[], int len)
 {
     // Sort individual subarrays of size RUN
-    for (int i = 0; i < len; i += RUN)
-        insertionSort(data, i, min((i + 31), (len - 1)));
+    for (int i = 0; i < len; i += RUN){
+		int tmp_r = ((i+31)<(len-1))?(i+31):(len-1);
+        insertionSort(data, i, tmp_r);
+    }
 
     // start merging from size RUN (or 32). It will merge
     // to form size 64, then 128, 256 and so on ....
@@ -91,12 +98,11 @@ unsigned int* tim_sort(unsigned int data[], int len)
             // find ending point of left sub array
             // mid+1 is starting point of right sub array
             int mid = left + size - 1;
-            int right = min((left + 2 * size - 1), (len - 1));
+            int right = ((left + 2 * size - 1)<(len - 1))?(left + 2 * size - 1):(len - 1);
 
             // merge sub array arr[left.....mid] &
             // arr[mid+1....right]
             merge(data, left, mid, right);
         }
     }
-    return data;
 }
