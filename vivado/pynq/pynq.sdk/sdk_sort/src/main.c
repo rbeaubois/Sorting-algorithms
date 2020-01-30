@@ -3,7 +3,6 @@
 #include "xaxidma.h"
 #include "sleep.h"
 #include "xtime_l.h"
-#include <time.h>
 
 #include "platform.h"
 #include "axilib/axilib.h"
@@ -12,7 +11,7 @@
 // Variable Definitions
 //
 
-#define NB_DATA 65536
+#define NB_DATA 256 //(1<<15)
 XAxiDma AxiDma;
 uint32_t* TX = ((uint32_t*) TX_BUFFER_BASE);
 uint32_t* RX = ((uint32_t*) RX_BUFFER_BASE);
@@ -22,8 +21,6 @@ int main() {
 	xil_printf("\r\nRun at: %s %s\r\n", __DATE__, __TIME__);
 	xil_printf("--- Entering main() --- \r\n");
 	xil_printf("NB_DATA: %d\r\n", NB_DATA);
-
-    srand(time(NULL));
 
 	int Status;
 	XAxiDma_Config *Config;

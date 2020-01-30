@@ -20,8 +20,8 @@ using namespace std;
 #include "splitter/splitter.h"
 #include "libcSorter/libcSorter.h"
 
-#define NB_THREADS 4
-#define NB_DATA (1<<25)
+#define NB_THREADS 8
+#define NB_DATA (1<<16)
 #define NBR_MED 10
 
 // Data splitter tests

@@ -2,8 +2,6 @@
 
 #include <stdio.h>
 
-#define BITONIC_SORTER_SIZE 16
-
 Trident::Trident() {
 
 }
