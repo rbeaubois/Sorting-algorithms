@@ -11,7 +11,7 @@ using namespace std;
 
 #include "../comparator.h"
 
-#define MAX_DATA_POWER	16		// 2^16 = 65536
+#define MAX_DATA_POWER	25		// 2^16 = 65536
 #define AVERAGING   	25		// Number of runs for a fixed number of data
 #define NB_SETS			10		// Number of data sets to run
 

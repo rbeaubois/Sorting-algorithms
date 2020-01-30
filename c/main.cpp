@@ -18,9 +18,10 @@ using namespace std;
 #include "selection/selection.h"
 #include "radix/radix.h"
 #include "splitter/splitter.h"
+#include "libcSorter/libcSorter.h"
 
 #define NB_THREADS 4
-#define NB_DATA (1<<16)
+#define NB_DATA (1<<25)
 #define NBR_MED 10
 
 // Data splitter tests
@@ -49,7 +50,8 @@ int main(int argc, char* argv[]) {
 				"\tradix\n" \
 				"\tselection\n" \
 				"\ttim\n" \
-				"\ttrident\n");
+				"\ttrident\n" \
+				"\tlibc\n");
 		exit(1);
 	}
 
@@ -68,6 +70,8 @@ int main(int argc, char* argv[]) {
 		s = new Tim();
 	} else if (!strcmp(argv[1], "trident")) {
 		s = new Trident();
+	} else if (!strcmp(argv[1], "libc")) {
+		s = new LibcSorter();
 	} else if (!strcmp(argv[1], "splitter")) {
 		foo(data);
 		exit(0);
@@ -82,8 +86,8 @@ int main(int argc, char* argv[]) {
 		cout << "End of benchmark" << endl;
 	}
 
-	//int duration = s->process(data, NB_DATA);
-    //cout << "Execution time: \t" << duration << "us" << endl;
+	int duration = s->process(data, NB_DATA);
+    cout << "Execution time: \t" << duration << "us" << endl;
 	
 	free(data);
 	exit(0);
