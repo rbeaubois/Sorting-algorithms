@@ -82,8 +82,8 @@ int main(int argc, char* argv[]) {
 		cout << "End of benchmark" << endl;
 	}
 
-	int duration = s->process(data, NB_DATA);
-    cout << "Execution time: \t" << duration << "us" << endl;
+	//int duration = s->process(data, NB_DATA);
+    //cout << "Execution time: \t" << duration << "us" << endl;
 	
 	free(data);
 	exit(0);
@@ -108,8 +108,10 @@ void foo(unsigned int* data) {
     for(int i = 0; i < NBR_MED+1; i++) {
         //cout << "Sort: " << (i==0?0:0+imedians[i-1]) << " "
 		//	<< (i==NBR_MED?NB_DATA:imedians[i]) << endl;
-        cout << "Sort time: " << q.process(i==0?data:data+imedians[i-1]+1,
-					(i==NBR_MED?NB_DATA:imedians[i])-(i==0?0:imedians[i-1]+1))
+        cout << "Sort time: " <<
+			q.process( i==0 ? data : data+imedians[i-1]+1,
+					(i==NBR_MED ? NB_DATA : imedians[i]) -
+					(i==0 ? 0 : imedians[i-1]+1))
 			<< endl;
     }
 

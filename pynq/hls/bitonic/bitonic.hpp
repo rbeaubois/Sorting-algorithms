@@ -10,8 +10,10 @@
 typedef ap_axiu<32, 1, 1, 1> AXI_VALUE;
 typedef hls::stream<AXI_VALUE> AXI_STREAM;
 
-#define STEP 16
-#define SIZE (1<<STEP)
+#define TSIZE (1<<4)
+#define STEP 2
+#define MSIZE (1<<STEP)
+
 
 inline void bitonic_sort(unsigned int* data);
 void HLS_bitonic(AXI_STREAM* S_AXIS, AXI_STREAM* M_AXIS);
