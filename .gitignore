@@ -22,7 +22,7 @@ hls/check_side_chan_axi/hls_project/
 hls/sorting/hls_sorting/
 
 # Vivado projects
-vivado/pynq/pynq.*
-vivado/pynq/hls_ip
+vivado/pynq/
 vivado/HLS_IP_CATALOG/
 
+vivado/HLS_IP_CATALOG
